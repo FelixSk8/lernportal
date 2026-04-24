@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#6366f1">
+<title>IHK · IT Cyber Security Advisor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+
+:root[data-theme="light"]{
+  --bg:#fafafc;
+  --bg-alt:#f4f4f8;
+  --surface:#ffffff;
+  --surface-hover:#f8f8fc;
+  --border:#ececf2;
+  --border-strong:#d8d8e0;
+  --text:#0f0f1a;
+  --text2:#4a4a5e;
+  --text3:#8e8ea3;
+  --primary:#6366f1;
+  --primary-hover:#5558e3;
+  --primary-light:#eef0ff;
+  --accent-pink:#ec4899;
+  --accent-pink-light:#fce7f3;
+  --accent-teal:#14b8a6;
+  --accent-teal-light:#ccfbf1;
+  --accent-amber:#f59e0b;
+  --accent-amber-light:#fef3c7;
+  --accent-purple:#a855f7;
+  --accent-purple-light:#f3e8ff;
+  --accent-red:#ef4444;
+  --accent-red-light:#fee2e2;
+  --accent-green:#10b981;
+  --accent-green-light:#d1fae5;
+  --shadow-sm:0 1px 2px rgba(15,15,26,.04);
+  --shadow:0 4px 12px rgba(15,15,26,.06);
+  --shadow-lg:0 12px 32px rgba(15,15,26,.08);
+  --shadow-glow:0 0 0 4px rgba(99,102,241,.12);
+  --gradient-hero:linear-gradient(135deg,#6366f1 0%,#a855f7 50%,#ec4899 100%);
+  --gradient-card:linear-gradient(135deg,rgba(99,102,241,.08),rgba(168,85,247,.08));
+}
+
+:root[data-theme="dark"]{
+  --bg:#0a0a12;
+  --bg-alt:#12121c;
+  --surface:#16161f;
+  --surface-hover:#1c1c28;
+  --border:#26262f;
+  --border-strong:#35353f;
+  --text:#f4f4f8;
+  --text2:#a8a8b8;
+  --text3:#6e6e82;
+  --primary:#818cf8;
+  --primary-hover:#9ea6fa;
+  --primary-light:rgba(129,140,248,.15);
+  --accent-pink:#f472b6;
+  --accent-pink-light:rgba(244,114,182,.15);
+  --accent-teal:#2dd4bf;
+  --accent-teal-light:rgba(45,212,191,.15);
+  --accent-amber:#fbbf24;
+  --accent-amber-light:rgba(251,191,36,.15);
+  --accent-purple:#c084fc;
+  --accent-purple-light:rgba(192,132,252,.15);
+  --accent-red:#f87171;
+  --accent-red-light:rgba(248,113,113,.15);
+  --accent-green:#34d399;
+  --accent-green-light:rgba(52,211,153,.15);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  --shadow:0 4px 12px rgba(0,0,0,.4);
+  --shadow-lg:0 12px 32px rgba(0,0,0,.5);
+  --shadow-glow:0 0 0 4px rgba(129,140,248,.2);
+  --gradient-hero:linear-gradient(135deg,#818cf8 0%,#c084fc 50%,#f472b6 100%);
+  --gradient-card:linear-gradient(135deg,rgba(129,140,248,.12),rgba(192,132,252,.12));
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-feature-settings:"cv11","ss01";transition:background .3s,color .3s;overflow-x:hidden}
+
+/* Animated background */
+body::before{content:'';position:fixed;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(99,102,241,.08) 0%,transparent 70%);pointer-events:none;z-index:0;animation:float1 20s ease-in-out infinite}
+body::after{content:'';position:fixed;bottom:-20%;right:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(236,72,153,.06) 0%,transparent 70%);pointer-events:none;z-index:0;animation:float2 25s ease-in-out infinite}
+[data-theme="dark"] body::before{background:radial-gradient(circle,rgba(129,140,248,.1) 0%,transparent 70%)}
+[data-theme="dark"] body::after{background:radial-gradient(circle,rgba(244,114,182,.08) 0%,transparent 70%)}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,50px) scale(1.1)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,-30px) scale(1.15)}}
+
+/* Topbar */
+.topbar{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;transition:all .3s}
+.topbar-left{display:flex;align-items:center;gap:14px}
+.logo-mark{width:32px;height:32px;border-radius:9px;background:var(--gradient-hero);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;box-shadow:var(--shadow-sm);letter-spacing:-.5px}
+.topbar-title{display:flex;flex-direction:column}
+.topbar-title strong{font-size:14px;font-weight:700;letter-spacing:-.2px;color:var(--text)}
+.topbar-title span{font-size:11px;color:var(--text3);font-weight:500}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text2);transition:all .2s;padding:0}
+.icon-btn:hover{background:var(--surface-hover);color:var(--text);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.icon-btn svg{width:18px;height:18px}
+.menu-btn{display:none}
+@media(max-width:860px){.menu-btn{display:flex}}
+
+/* Layout */
+.layout{display:flex;min-height:calc(100vh - 64px);position:relative;z-index:1}
+
+/* Sidebar */
+.sidebar{width:280px;flex-shrink:0;padding:24px 16px;position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;transition:transform .3s}
+.sidebar::-webkit-scrollbar{width:6px}
+.sidebar::-webkit-scrollbar-track{background:transparent}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.sidebar-label{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);padding:8px 12px 12px}
+
+.mod-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;cursor:pointer;margin-bottom:2px;transition:all .2s;color:var(--text2);border:1px solid transparent;position:relative;overflow:hidden}
+.mod-item::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:60%;background:var(--primary);border-radius:0 3px 3px 0;transition:transform .25s}
+.mod-item:hover:not(.locked){background:var(--surface-hover);color:var(--text);transform:translateX(2px)}
+.mod-item.active{background:var(--primary-light);color:var(--primary);font-weight:600}
+.mod-item.active::before{transform:translateY(-50%) scaleY(1)}
+.mod-item.locked{opacity:.4;cursor:default}
+.mod-num{width:32px;height:32px;border-radius:10px;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text2);flex-shrink:0;font-family:'JetBrains Mono',monospace;transition:all .2s}
+.mod-item.active .mod-num{background:var(--primary);color:#fff;box-shadow:0 4px 12px rgba(99,102,241,.3)}
+.mod-info{flex:1;min-width:0}
+.mod-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mod-sub{font-size:11px;color:var(--text3);margin-top:1px;font-weight:500}
+.mod-item.active .mod-sub{color:var(--primary)}
+.mod-indicator{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ind-pruef{background:var(--accent-red);box-shadow:0 0 0 3px var(--accent-red-light)}
+.ind-exam{background:var(--primary);box-shadow:0 0 0 3px var(--primary-light)}
+.ind-locked{background:var(--border-strong)}
+
+.sidebar-sep{height:1px;background:var(--border);margin:16px 12px}
+
+.progress-card{background:var(--gradient-card);border:1px solid var(--border);border-radius:16px;padding:16px;margin:0 4px}
+.progress-card-title{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.progress-num{display:flex;align-items:baseline;gap:4px;margin-bottom:8px}
+.progress-num strong{font-size:24px;font-weight:800;color:var(--text);font-family:'JetBrains Mono',monospace}
+.progress-num span{font-size:13px;color:var(--text3);font-weight:500}
+.progress-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--gradient-hero);border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.progress-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.3) 50%,transparent 100%);animation:shimmer 2s infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+/* Main */
+.main{flex:1;padding:32px 40px 80px;max-width:100%;overflow-x:hidden}
+.page{display:none;animation:fadeInUp .5s cubic-bezier(.4,0,.2,1)}
+.page.active{display:block}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* Hero overview */
+.hero{background:var(--gradient-hero);border-radius:24px;padding:36px 40px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+.hero::before{content:'';position:absolute;top:-50%;right:-10%;width:60%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.15) 0%,transparent 60%);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(255,255,255,.2);padding:5px 12px;border-radius:20px;margin-bottom:14px;backdrop-filter:blur(10px)}
+.hero h1{font-size:32px;font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:10px;max-width:600px}
+.hero p{font-size:15px;opacity:.95;max-width:500px;line-height:1.5;font-weight:500}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;max-width:500px}
+.hero-stat{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border-radius:14px;padding:14px 16px;border:1px solid rgba(255,255,255,.2)}
+.hero-stat-num{font-size:24px;font-weight:800;font-family:'JetBrains Mono',monospace;letter-spacing:-.5px}
+.hero-stat-label{font-size:11px;opacity:.85;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+
+/* Overview grid */
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin:32px 0 16px}
+.section-head h2{font-size:20px;font-weight:700;letter-spacing:-.3px;color:var(--text)}
+.section-head p{font-size:13px;color:var(--text3);font-weight:500}
+
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.ov-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.ov-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-hero);opacity:0;transition:opacity .3s}
+.ov-card:hover:not(.ov-locked){transform:translateY(-4px);border-color:var(--border-strong);box-shadow:var(--shadow-lg)}
+.ov-card:hover:not(.ov-locked)::before{opacity:1}
+.ov-card.ov-locked{opacity:.5;cursor:default}
+.ov-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.ov-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);font-weight:700;letter-spacing:.5px}
+.ov-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700}
+.ov-icon-1{background:var(--primary-light);color:var(--primary)}
+.ov-icon-2{background:var(--accent-teal-light);color:var(--accent-teal)}
+.ov-icon-3{background:var(--accent-pink-light);color:var(--accent-pink)}
+.ov-icon-4{background:var(--accent-amber-light);color:var(--accent-amber)}
+.ov-icon-10{background:var(--gradient-hero);color:#fff}
+.ov-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:-.2px;line-height:1.3}
+.ov-meta{font-size:12px;color:var(--text3);font-weight:500;margin-bottom:14px;line-height:1.4}
+.ov-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:4px 10px;border-radius:20px;font-weight:700;letter-spacing:.2px}
+.ov-badge.done{background:var(--accent-green-light);color:var(--accent-green)}
+.ov-badge.locked{background:var(--bg-alt);color:var(--text3)}
+.ov-badge.exam{background:var(--primary-light);color:var(--primary)}
+.ov-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
+
+/* Module page */
+.page-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;gap:16px;flex-wrap:wrap}
+.page-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--primary);margin-bottom:8px;background:var(--primary-light);padding:4px 10px;border-radius:20px}
+.page-title{font-size:28px;font-weight:800;letter-spacing:-.8px;color:var(--text);line-height:1.15;margin-bottom:8px}
+.page-meta{display:flex;gap:16px;font-size:13px;color:var(--text3);font-weight:500;flex-wrap:wrap}
+.page-meta span{display:flex;align-items:center;gap:5px}
+.page-meta span::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--text3)}
+
+.pruef-badge{display:flex;align-items:center;gap:8px;background:var(--accent-red-light);color:var(--accent-red);border:1px solid transparent;font-size:12px;padding:8px 14px;border-radius:12px;white-space:nowrap;font-weight:600}
+.pruef-dot{width:8px;height:8px;border-radius:50%;background:var(--accent-red);animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}50%{box-shadow:0 0 0 6px rgba(239,68,68,0)}}
+
+/* Tabs */
+.tabs{display:flex;gap:4px;margin-bottom:24px;padding:4px;background:var(--bg-alt);border-radius:14px;width:fit-content;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:9px 18px;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;border:none;background:none;border-radius:10px;transition:all .2s;font-family:inherit;white-space:nowrap}
+.tab:hover{color:var(--text)}
+.tab.active{background:var(--surface);color:var(--primary);box-shadow:var(--shadow-sm)}
+
+.tab-content{display:none;animation:fadeInUp .4s cubic-bezier(.4,0,.2,1)}
+.tab-content.active{display:block}
+
+/* Content cards */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px 28px;margin-bottom:16px;transition:all .2s}
+.card:hover{border-color:var(--border-strong);box-shadow:var(--shadow-sm)}
+.card-pruef{position:relative;overflow:hidden}
+.card-pruef::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent-red)}
+.card h3{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:10px;color:var(--text);letter-spacing:-.2px}
+.card p,.card li{font-size:14px;color:var(--text2);line-height:1.7}
+.card ul{padding-left:1.2rem;margin-top:8px}
+.card ul li{margin-bottom:4px}
+.pruef-label{margin-left:auto;font-size:10px;font-weight:700;background:var(--accent-red-light);color:var(--accent-red);padding:4px 10px;border-radius:20px;letter-spacing:.5px;white-space:nowrap;display:flex;align-items:center;gap:5px}
+.pruef-label::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
+
+/* Vergleich */
+.vgl{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.vgl-box{background:var(--bg-alt);border-radius:14px;padding:18px 20px;border:1px solid var(--border);transition:all .2s}
+.vgl-box:hover{transform:translateY(-2px);border-color:var(--border-strong)}
+.vgl-eyebrow{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:6px;margin-bottom:8px}
+.vgl-box:nth-child(1) .vgl-eyebrow{background:var(--primary-light);color:var(--primary)}
+.vgl-box:nth-child(2) .vgl-eyebrow{background:var(--accent-teal-light);color:var(--accent-teal)}
+.vgl-box h4{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--text);letter-spacing:-.2px}
+.vgl-box p{font-size:13px;color:var(--text2);line-height:1.6}
+.merksatz{background:var(--primary-light);border-radius:12px;padding:12px 16px;margin-top:14px;font-size:13px;color:var(--primary);font-weight:500;display:flex;gap:10px;align-items:flex-start;border:1px solid transparent}
+.merksatz-icon{flex-shrink:0;margin-top:1px}
+
+/* Schutzziele */
+.sz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.sz{border-radius:14px;padding:18px 14px;text-align:center;transition:all .3s cubic-bezier(.4,0,.2,1);cursor:default;border:1px solid transparent}
+.sz:hover{transform:translateY(-4px) scale(1.02)}
+.sz-icon{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;font-weight:800}
+.sz h4{font-size:13px;font-weight:700;margin-bottom:4px}
+.sz p{font-size:11px;line-height:1.5;font-weight:500}
+.sz-v{background:var(--primary-light)}.sz-v h4,.sz-v .sz-icon{color:var(--primary)}.sz-v p{color:var(--primary)}.sz-v .sz-icon{background:var(--primary);color:#fff}
+.sz-i{background:var(--accent-teal-light)}.sz-i h4{color:var(--accent-teal)}.sz-i p{color:var(--accent-teal)}.sz-i .sz-icon{background:var(--accent-teal);color:#fff}
+.sz-a{background:var(--accent-amber-light)}.sz-a h4{color:var(--accent-amber)}.sz-a p{color:var(--accent-amber)}.sz-a .sz-icon{background:var(--accent-amber);color:#fff}
+.sz-au{background:var(--accent-purple-light)}.sz-au h4{color:var(--accent-purple)}.sz-au p{color:var(--accent-purple)}.sz-au .sz-icon{background:var(--accent-purple);color:#fff}
+
+/* Begriffe grid */
+.beg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:14px}
+.beg{background:var(--bg-alt);border-radius:12px;padding:14px 16px;border:1px solid var(--border);transition:all .2s}
+.beg:hover{transform:translateY(-2px);border-color:var(--primary);background:var(--surface)}
+.beg h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;letter-spacing:-.1px}
+.beg p{font-size:12px;color:var(--text2);line-height:1.5;font-weight:500}
+
+/* Kette */
+.kette{display:flex;align-items:stretch;gap:10px;margin-top:16px;flex-wrap:wrap}
+.kette-box{flex:1;min-width:160px;padding:18px 16px;border-radius:14px;border:1px solid var(--border);transition:all .3s}
+.kette-box:hover{transform:translateY(-3px)}
+.kette-box.k1{background:var(--accent-amber-light);border-color:transparent}
+.kette-box.k2{background:var(--accent-red-light);border-color:transparent}
+.kette-box.k3{background:var(--primary-light);border-color:transparent}
+.kette-box h4{font-size:13px;font-weight:700;margin-bottom:8px}
+.kette-box.k1 h4{color:var(--accent-amber)}
+.kette-box.k2 h4{color:var(--accent-red)}
+.kette-box.k3 h4{color:var(--primary)}
+.kette-box p{font-size:12px;line-height:1.5;font-weight:500}
+.kette-box.k1 p{color:var(--accent-amber)}
+.kette-box.k2 p{color:var(--accent-red)}
+.kette-box.k3 p{color:var(--primary)}
+.kette-box .ex{font-size:11px;margin-top:8px;opacity:.8;font-style:italic;font-weight:500}
+.formel{background:var(--gradient-card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-top:16px;font-size:14px;color:var(--text);font-family:'JetBrains Mono',monospace;text-align:center;font-weight:600;letter-spacing:-.3px}
+
+/* Timeline */
+.timeline{margin-top:16px;position:relative}
+.timeline::before{content:'';position:absolute;left:72px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--primary) 0%,var(--accent-pink) 100%);border-radius:1px}
+.tl-row{display:flex;gap:16px;margin-bottom:14px;align-items:flex-start;position:relative}
+.tl-date{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);width:60px;flex-shrink:0;padding-top:4px;font-weight:700;text-align:right}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--primary);flex-shrink:0;margin-top:3px;box-shadow:0 0 0 4px var(--surface);z-index:1;transition:all .2s}
+.tl-row:hover .tl-dot{background:var(--primary);transform:scale(1.2)}
+.tl-content{flex:1;padding-bottom:8px}
+.tl-content h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px;letter-spacing:-.2px}
+.tl-content p{font-size:13px;color:var(--text2);line-height:1.5}
+
+/* Prozesshaus */
+.ph{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.ph-box{border-radius:14px;padding:16px 20px;border:1px solid transparent;transition:all .3s;cursor:default}
+.ph-box:hover{transform:translateX(6px)}
+.ph-mgmt{background:var(--primary-light)}.ph-mgmt h4{color:var(--primary)}.ph-mgmt p{color:var(--primary)}
+.ph-kern{background:var(--accent-pink-light)}.ph-kern h4{color:var(--accent-pink)}.ph-kern p{color:var(--accent-pink)}
+.ph-support{background:var(--accent-teal-light)}.ph-support h4{color:var(--accent-teal)}.ph-support p{color:var(--accent-teal)}
+.ph-box h4{font-size:14px;font-weight:700;margin-bottom:4px;letter-spacing:-.2px}
+.ph-box p{font-size:13px;font-weight:500;line-height:1.5}
+
+/* Phasen */
+.phases{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+.phase{background:var(--bg-alt);border-radius:12px;padding:14px 10px;text-align:center;border:1px solid var(--border);transition:all .3s;position:relative;overflow:hidden}
+.phase:hover{transform:translateY(-3px);border-color:var(--primary);background:var(--surface)}
+.phase-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:8px;background:var(--primary);color:#fff;font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:8px}
+.phase p{font-size:11px;color:var(--text2);line-height:1.4;font-weight:600}
+
+/* Reifegrad */
+.reife{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+.reife-box{border-radius:12px;padding:14px 10px;text-align:center;border:1px solid var(--border);transition:all .3s;background:var(--bg-alt)}
+.reife-box:hover{transform:translateY(-3px)}
+.reife-box:nth-child(1){background:var(--accent-red-light);border-color:transparent}.reife-box:nth-child(1) .rlvl,.reife-box:nth-child(1) h4{color:var(--accent-red)}.reife-box:nth-child(1) p{color:var(--accent-red)}
+.reife-box:nth-child(2){background:var(--accent-amber-light);border-color:transparent}.reife-box:nth-child(2) .rlvl,.reife-box:nth-child(2) h4{color:var(--accent-amber)}.reife-box:nth-child(2) p{color:var(--accent-amber)}
+.reife-box:nth-child(3){background:var(--primary-light);border-color:transparent}.reife-box:nth-child(3) .rlvl,.reife-box:nth-child(3) h4{color:var(--primary)}.reife-box:nth-child(3) p{color:var(--primary)}
+.reife-box:nth-child(4){background:var(--accent-teal-light);border-color:transparent}.reife-box:nth-child(4) .rlvl,.reife-box:nth-child(4) h4{color:var(--accent-teal)}.reife-box:nth-child(4) p{color:var(--accent-teal)}
+.reife-box:nth-child(5){background:var(--accent-green-light);border-color:transparent}.reife-box:nth-child(5) .rlvl,.reife-box:nth-child(5) h4{color:var(--accent-green)}.reife-box:nth-child(5) p{color:var(--accent-green)}
+.reife-box .rlvl{font-size:11px;font-weight:800;font-family:'JetBrains Mono',monospace;margin-bottom:4px;letter-spacing:.5px}
+.reife-box h4{font-size:12px;font-weight:700;margin-bottom:4px}
+.reife-box p{font-size:10px;line-height:1.4;font-weight:500}
+
+/* Compare */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.cmp-box{background:var(--bg-alt);border-radius:14px;padding:18px 20px;border:1px solid var(--border);transition:all .2s}
+.cmp-box:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.cmp-box h4{font-size:14px;font-weight:700;margin-bottom:12px;color:var(--text);letter-spacing:-.2px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.cmp-row{display:flex;justify-content:space-between;padding:6px 0;font-size:12px;gap:10px}
+.cmp-row span:first-child{color:var(--text3);font-weight:500}
+.cmp-row span:last-child{color:var(--text);font-weight:600;text-align:right}
+
+/* Lernkarten */
+.karten-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:10px}
+.karten-nav span{font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace;font-weight:600;flex-shrink:0}
+.btn{padding:10px 18px;border:1px solid var(--border);border-radius:12px;background:var(--surface);cursor:pointer;font-size:13px;color:var(--text);font-family:inherit;transition:all .2s;font-weight:600;white-space:nowrap}
+.btn:hover{background:var(--surface-hover);border-color:var(--border-strong);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:var(--gradient-hero);color:#fff;border-color:transparent;box-shadow:var(--shadow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);filter:brightness(1.1)}
+
+.karte{background:var(--surface);border:1px solid var(--border);border-radius:20px;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px;text-align:center;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;cursor:pointer;margin-bottom:16px;transform-style:preserve-3d}
+.karte:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
+.karte.pruef{background:linear-gradient(135deg,var(--surface) 0%,var(--accent-red-light) 100%)}
+.karte-pruef-badge{position:absolute;top:16px;right:16px;font-size:10px;background:var(--accent-red);color:#fff;padding:4px 10px;border-radius:20px;font-weight:700;display:none;letter-spacing:.5px}
+.karte.pruef .karte-pruef-badge{display:block}
+.karte-frage{font-size:17px;font-weight:700;color:var(--text);line-height:1.4;letter-spacing:-.3px;max-width:500px}
+.karte-antwort{font-size:14px;color:var(--text2);line-height:1.7;white-space:pre-line;display:none;max-width:500px;font-weight:500}
+.karte-hint{font-size:11px;color:var(--text3);margin-top:16px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.karte.flipped .karte-frage{display:none}
+.karte.flipped .karte-antwort{display:block}
+.karte.flipped .karte-hint{display:none}
+.fort-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.fort-fill{height:100%;background:var(--gradient-hero);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+
+/* Quiz */
+.quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px}
+.quiz-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px}
+.quiz-counter{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:.5px}
+.quiz-pruef{font-size:10px;background:var(--accent-red-light);color:var(--accent-red);padding:4px 10px;border-radius:20px;display:none;font-weight:700;letter-spacing:.5px}
+.quiz-pruef.show{display:flex;align-items:center;gap:5px}
+.quiz-pruef.show::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent-red)}
+.quiz-progress-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:22px}
+.quiz-progress-fill{height:100%;background:var(--gradient-hero);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.quiz-frage{font-size:17px;font-weight:700;color:var(--text);margin-bottom:20px;line-height:1.4;letter-spacing:-.3px}
+.quiz-opts{display:flex;flex-direction:column;gap:10px}
+.opt{padding:14px 16px;border:1.5px solid var(--border);border-radius:12px;cursor:pointer;font-size:14px;color:var(--text);background:var(--surface);text-align:left;transition:all .2s;font-family:inherit;display:flex;align-items:center;gap:14px;font-weight:500}
+.opt:hover:not(.selected):not(:disabled){background:var(--surface-hover);border-color:var(--primary);transform:translateX(2px)}
+.opt.selected{background:var(--primary-light);border-color:var(--primary);color:var(--primary);font-weight:600}
+.opt.richtig{background:var(--accent-green-light);border-color:var(--accent-green);color:var(--accent-green);font-weight:600}
+.opt.falsch{background:var(--accent-red-light);border-color:var(--accent-red);color:var(--accent-red);font-weight:600}
+.opt-label{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'JetBrains Mono',monospace;font-size:12px;flex-shrink:0;background:var(--bg-alt);color:var(--text2);transition:all .2s}
+.opt.selected .opt-label{background:var(--primary);color:#fff}
+.opt.richtig .opt-label{background:var(--accent-green);color:#fff}
+.opt.falsch .opt-label{background:var(--accent-red);color:#fff}
+.feedback{margin-top:16px;padding:14px 18px;border-radius:12px;font-size:13px;line-height:1.6;display:none;font-weight:500;border:1px solid transparent}
+.feedback.ok{background:var(--accent-green-light);color:var(--accent-green);display:block}
+.feedback.nok{background:var(--accent-red-light);color:var(--accent-red);display:block}
+.quiz-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:18px;flex-wrap:wrap;gap:10px}
+.quiz-bottom-right{display:flex;gap:8px}
+.ergebnis{padding:0}
+.ergebnis-top{text-align:center;margin-bottom:32px;padding:32px 24px;background:var(--gradient-hero);border-radius:20px;color:#fff;position:relative;overflow:hidden}
+.ergebnis-top::before{content:'';position:absolute;top:-50%;right:-10%;width:60%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.15) 0%,transparent 60%)}
+.ergebnis-top h3{font-size:20px;font-weight:800;margin-bottom:8px;letter-spacing:-.3px;position:relative}
+.score-num{font-size:64px;font-weight:800;margin:10px 0;font-family:'JetBrains Mono',monospace;letter-spacing:-2px;position:relative}
+.ergebnis-top p{font-size:14px;opacity:.95;margin-bottom:20px;font-weight:500;position:relative}
+.ergebnis-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative}
+.ergebnis-btns .btn{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);color:#fff;backdrop-filter:blur(10px)}
+.ergebnis-btns .btn:hover{background:rgba(255,255,255,.3)}
+.ergebnis-btns .btn-primary{background:#fff;color:var(--primary);border-color:transparent}
+.ergebnis-btns .btn-primary:hover{background:#fff;filter:brightness(.95)}
+.auswertung-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);letter-spacing:-.2px}
+.auswertung-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.auswertung-item:last-child{border:none}
+.aw-icon{width:28px;height:28px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:1px}
+.aw-ok{background:var(--accent-green-light);color:var(--accent-green)}
+.aw-nok{background:var(--accent-red-light);color:var(--accent-red)}
+.aw-content{flex:1}
+.aw-frage{font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;line-height:1.4}
+.aw-antwort{font-size:12px;color:var(--text2);line-height:1.5;font-weight:500}
+.aw-richtig{font-size:12px;color:var(--accent-green);margin-top:3px;font-weight:600}
+
+/* Prüfungsmodul 10 */
+.pruef-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.po-box{border-radius:18px;padding:24px 20px;border:1px solid transparent;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.po-box:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.po-box.mc{background:var(--primary-light)}
+.po-box.proj{background:var(--accent-amber-light)}
+.po-box.vert{background:var(--accent-purple-light)}
+.po-pct{font-size:42px;font-weight:800;font-family:'JetBrains Mono',monospace;margin-bottom:6px;letter-spacing:-2px;line-height:1}
+.po-box.mc .po-pct{color:var(--primary)}
+.po-box.proj .po-pct{color:var(--accent-amber)}
+.po-box.vert .po-pct{color:var(--accent-purple)}
+.po-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.2px}
+.po-detail{font-size:11px;line-height:1.6;font-weight:500}
+.po-box.mc .po-detail{color:var(--primary)}
+.po-box.proj .po-detail{color:var(--accent-amber)}
+.po-box.vert .po-detail{color:var(--accent-purple)}
+.gl-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text)}
+.gl-item:last-child{border:none}
+.gl-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:#fff;background:var(--primary);font-weight:700;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.gl-text{flex:1}
+.gl-text strong{font-size:14px;font-weight:700;color:var(--text)}
+.gl-sub{margin-top:6px;padding-left:0;list-style:none}
+.gl-sub li{font-size:12px;color:var(--text2);margin-bottom:3px;padding-left:14px;position:relative;font-weight:500;line-height:1.5}
+.gl-sub li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--primary);position:absolute;left:2px;top:7px}
+
+.kriterien{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.krit-item{background:var(--bg-alt);border-radius:12px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);transition:all .2s}
+.krit-item:hover{border-color:var(--primary);background:var(--surface)}
+.krit-icon{width:24px;height:24px;border-radius:8px;background:var(--accent-green);color:#fff;font-size:12px;font-weight:700;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.krit-item.warn .krit-icon{background:var(--accent-amber)}
+.krit-item p{font-size:12px;color:var(--text2);line-height:1.5;font-weight:500}
+.krit-item p strong{color:var(--text);font-weight:700}
+
+.bestehen-box{background:var(--gradient-card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;margin-top:16px;display:flex;align-items:center;gap:18px}
+.bestehen-box .pct{font-size:38px;font-weight:800;color:var(--accent-green);font-family:'JetBrains Mono',monospace;letter-spacing:-1.5px;line-height:1}
+.bestehen-box p{font-size:14px;color:var(--text2);font-weight:500;line-height:1.4}
+.bestehen-box p strong{color:var(--text);font-weight:700;display:block;margin-bottom:2px}
+
+/* Mobile */
+@media(max-width:860px){
+  body::before,body::after{display:none}
+  .layout{flex-direction:column;display:block}
+  .sidebar{
+    position:fixed !important;
+    top:64px;
+    left:0;
+    width:min(85vw,300px);
+    height:calc(100vh - 64px);
+    height:calc(100dvh - 64px);
+    background:var(--surface);
+    border-right:1px solid var(--border);
+    z-index:9999 !important;
+    transform:translateX(-100%);
+    transition:transform .25s ease-out;
+    box-shadow:0 10px 40px rgba(0,0,0,.25);
+    overflow-y:auto;
+    overflow-x:hidden;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+    padding:16px 12px 60px;
+    visibility:hidden;
+    margin:0 !important;
+  }
+  .sidebar.open{
+    transform:translateX(0);
+    visibility:visible;
+  }
+  .sidebar-backdrop{
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100vw;
+    height:100vh;
+    height:100dvh;
+    background:rgba(0,0,0,.5);
+    z-index:9998 !important;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease-out;
+  }
+  .sidebar-backdrop.open{
+    opacity:1;
+    pointer-events:auto;
+  }
+  body.sidebar-open{overflow:hidden;position:relative}
+  .topbar{z-index:10000 !important}
+  .main{padding:20px 16px 60px;width:100%}
+  .hero{padding:24px;border-radius:18px}
+  .hero h1{font-size:24px}
+  .hero p{font-size:14px}
+  .hero-stats{grid-template-columns:repeat(3,1fr);gap:8px}
+  .hero-stat{padding:10px;border-radius:10px}
+  .hero-stat-num{font-size:18px}
+  .hero-stat-label{font-size:9px}
+  .page-title{font-size:22px}
+  .topbar{padding:0 16px}
+  .topbar-title span{display:none}
+  .card{padding:18px 20px;border-radius:14px}
+  .vgl,.compare-grid,.kriterien,.pruef-overview{grid-template-columns:1fr}
+  .sz-grid{grid-template-columns:repeat(2,1fr)}
+  .phases,.reife{grid-template-columns:repeat(2,1fr)}
+  .kette{flex-direction:column}
+  .quiz-card{padding:20px}
+  .quiz-frage{font-size:15px}
+  .opt{padding:12px 14px;font-size:13px}
+  .karte{min-height:200px;padding:28px 20px}
+  .karte-frage{font-size:15px}
+  .overview-grid{grid-template-columns:1fr}
+  .page-header{flex-direction:column;align-items:stretch}
+  .pruef-badge{align-self:flex-start}
+  .timeline::before{left:58px}
+  .tl-date{width:46px;font-size:10px}
+  .section-head{flex-direction:column;align-items:flex-start;gap:4px}
+  .bestehen-box{flex-direction:column;text-align:center;align-items:center}
+  .ergebnis-top{padding:24px 20px}
+  .score-num{font-size:48px}
+}
+@media(max-width:480px){
+  .phases,.reife{grid-template-columns:1fr}
+  .sz-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <button class="icon-btn menu-btn" onclick="toggleSidebar(event)" aria-label="Menü" type="button">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="logo-mark">IT</div>
+    <div class="topbar-title">
+      <strong>Cyber Security Advisor</strong>
+      <span>IHK-Weiterbildung · Q-SOFT</span>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <button class="icon-btn" onclick="toggleTheme()" aria-label="Theme wechseln" id="themeBtn">
+      <svg id="iconSun" style="display:none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg id="iconMoon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="sidebar-backdrop" onclick="closeSidebar()" id="backdrop"></div>
+
+<div class="layout">
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-label">Navigation</div>
+  <div class="mod-item active" onclick="nav('uebersicht',this)">
+    <div class="mod-num">⊞</div>
+    <div class="mod-info"><div class="mod-name">Übersicht</div><div class="mod-sub">Alle Module</div></div>
+  </div>
+
+  <div class="sidebar-sep"></div>
+  <div class="sidebar-label">Module</div>
+
+  <div class="mod-item" onclick="nav('modul1',this)">
+    <div class="mod-num">01</div>
+    <div class="mod-info"><div class="mod-name">Grundlagen</div><div class="mod-sub">Begriffe & Bedeutung</div></div>
+    <div class="mod-indicator ind-pruef"></div>
+  </div>
+  <div class="mod-item" onclick="nav('modul2',this)">
+    <div class="mod-num">02</div>
+    <div class="mod-info"><div class="mod-name">Rechtliche Anf.</div><div class="mod-sub">Standards</div></div>
+    <div class="mod-indicator ind-pruef"></div>
+  </div>
+  <div class="mod-item" onclick="nav('modul3',this)">
+    <div class="mod-num">03</div>
+    <div class="mod-info"><div class="mod-name">Prozesse</div><div class="mod-sub">Prozessmanagement</div></div>
+    <div class="mod-indicator ind-pruef"></div>
+  </div>
+  <div class="mod-item" onclick="nav('modul4',this)">
+    <div class="mod-num">04</div>
+    <div class="mod-info"><div class="mod-name">IS-Leitlinie</div><div class="mod-sub">Dokumententypen</div></div>
+    <div class="mod-indicator ind-pruef"></div>
+  </div>
+  <div class="mod-item" onclick="nav('modul5',this)">
+    <div class="mod-num">05</div>
+    <div class="mod-info"><div class="mod-name">ISMS-Methodik</div><div class="mod-sub">Sicherheitskonzept</div></div>
+    <div class="mod-indicator ind-pruef"></div>
+  </div>
+  <div class="mod-item locked"><div class="mod-num">06</div><div class="mod-info"><div class="mod-name">Techn. Richtlinien</div><div class="mod-sub">Security-Technik</div></div><div class="mod-indicator ind-locked"></div></div>
+  <div class="mod-item locked"><div class="mod-num">07</div><div class="mod-info"><div class="mod-name">Security-Produkte</div><div class="mod-sub">Angriffsbeispiele</div></div><div class="mod-indicator ind-locked"></div></div>
+  <div class="mod-item locked"><div class="mod-num">08</div><div class="mod-info"><div class="mod-name">BCMS</div><div class="mod-sub">Notfallmanagement</div></div><div class="mod-indicator ind-locked"></div></div>
+  <div class="mod-item locked"><div class="mod-num">09</div><div class="mod-info"><div class="mod-name">Awareness</div><div class="mod-sub">Sensibilisierung</div></div><div class="mod-indicator ind-locked"></div></div>
+  <div class="mod-item" onclick="nav('modul10',this)">
+    <div class="mod-num">10</div>
+    <div class="mod-info"><div class="mod-name">Abschlusstest</div><div class="mod-sub">Prüfungsvorbereitung</div></div>
+    <div class="mod-indicator ind-exam"></div>
+  </div>
+
+  <div class="sidebar-sep"></div>
+
+  <div class="progress-card">
+    <div class="progress-card-title">Kurs-Fortschritt</div>
+    <div class="progress-num"><strong>50%</strong><span>5 / 10 Module</span></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ÜBERSICHT -->
+<div id="uebersicht" class="page active">
+  <div class="hero">
+    <span class="hero-eyebrow">IHK · Q-SOFT 2023/26</span>
+    <h1>Willkommen, Cyber Security Advisor 👋</h1>
+    <p>Dein modernes Lernportal für die IHK-Weiterbildung. Strukturiert, interaktiv und auf deine Prüfung optimiert.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Verfügbar</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">81</div><div class="hero-stat-label">Quizfragen</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">≥50%</div><div class="hero-stat-label">Bestehen</div></div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Alle Module</h2>
+    <p>Wähle ein Modul zum Lernen</p>
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-card" onclick="nav('modul1',document.querySelectorAll('.mod-item')[1])">
+      <div class="ov-head"><span class="ov-num">01 / 10</span><div class="ov-icon ov-icon-1">🎯</div></div>
+      <div class="ov-title">Grundlagen, Begriffe und Bedeutung</div>
+      <div class="ov-meta">17 Fragen · 8 Lernkarten</div>
+      <span class="ov-badge done">Verfügbar</span>
+    </div>
+    <div class="ov-card" onclick="nav('modul2',document.querySelectorAll('.mod-item')[2])">
+      <div class="ov-head"><span class="ov-num">02 / 10</span><div class="ov-icon ov-icon-2">⚖️</div></div>
+      <div class="ov-title">Rechtliche Anforderungen und Standards</div>
+      <div class="ov-meta">17 Fragen · 8 Lernkarten</div>
+      <span class="ov-badge done">Verfügbar</span>
+    </div>
+    <div class="ov-card" onclick="nav('modul3',document.querySelectorAll('.mod-item')[3])">
+      <div class="ov-head"><span class="ov-num">03 / 10</span><div class="ov-icon ov-icon-3">⚙️</div></div>
+      <div class="ov-title">Prozesse</div>
+      <div class="ov-meta">15 Fragen · 7 Lernkarten</div>
+      <span class="ov-badge done">Verfügbar</span>
+    </div>
+    <div class="ov-card" onclick="nav('modul4',document.querySelectorAll('.mod-item')[4])"><div class="ov-head"><span class="ov-num">04 / 10</span><div class="ov-icon ov-icon-4">📋</div></div><div class="ov-title">IS-Leitlinie und weitere Dokumententypen</div><div class="ov-meta">16 Fragen · 8 Lernkarten</div><span class="ov-badge done">Verfügbar</span></div>
+    <div class="ov-card" onclick="nav('modul5',document.querySelectorAll('.mod-item')[5])"><div class="ov-head"><span class="ov-num">05 / 10</span><div class="ov-icon ov-icon-4">🔐</div></div><div class="ov-title">ISMS-Methodik (Sicherheitskonzept)</div><div class="ov-meta">16 Fragen · 8 Lernkarten</div><span class="ov-badge done">Verfügbar</span></div>
+    <div class="ov-card ov-locked"><div class="ov-head"><span class="ov-num">06 / 10</span><div class="ov-icon ov-icon-4">🛡️</div></div><div class="ov-title">Technische Richtlinien</div><div class="ov-meta">PDF noch nicht hochgeladen</div><span class="ov-badge locked">Gesperrt</span></div>
+    <div class="ov-card ov-locked"><div class="ov-head"><span class="ov-num">07 / 10</span><div class="ov-icon ov-icon-4">💣</div></div><div class="ov-title">Security-Produkte und Angriffsbeispiele</div><div class="ov-meta">PDF noch nicht hochgeladen</div><span class="ov-badge locked">Gesperrt</span></div>
+    <div class="ov-card ov-locked"><div class="ov-head"><span class="ov-num">08 / 10</span><div class="ov-icon ov-icon-4">🚨</div></div><div class="ov-title">BCMS – Notfallmanagement</div><div class="ov-meta">PDF noch nicht hochgeladen</div><span class="ov-badge locked">Gesperrt</span></div>
+    <div class="ov-card ov-locked"><div class="ov-head"><span class="ov-num">09 / 10</span><div class="ov-icon ov-icon-4">💡</div></div><div class="ov-title">Awareness / Sensibilisierung</div><div class="ov-meta">PDF noch nicht hochgeladen</div><span class="ov-badge locked">Gesperrt</span></div>
+    <div class="ov-card" onclick="nav('modul10',document.querySelectorAll('.mod-item')[10])"><div class="ov-head"><span class="ov-num">10 / 10</span><div class="ov-icon ov-icon-10">🎓</div></div><div class="ov-title">IHK-Abschlusstest</div><div class="ov-meta">Prüfungsvorbereitung</div><span class="ov-badge exam">Prüfung</span></div>
+  </div>
+</div>
+
+<!-- MODUL 1 -->
+<div id="modul1" class="page">
+  <div class="page-header">
+    <div>
+      <span class="page-eyebrow">Modul 01</span>
+      <div class="page-title">Grundlagen, Begriffe und Bedeutung</div>
+      <div class="page-meta"><span>17 Fragen</span><span>8 Lernkarten</span><span>4 Prüfungsthemen</span></div>
+    </div>
+    <div class="pruef-badge"><div class="pruef-dot"></div> Prüfungsrelevant markiert</div>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="tab('m1','inhalt',this)">📖 Lerninhalt</button>
+    <button class="tab" onclick="tab('m1','karten',this)">🎴 Lernkarten</button>
+    <button class="tab" onclick="tab('m1','quiz',this)">✅ Quiz</button>
+  </div>
+  <div id="m1-inhalt" class="tab-content active">
+    <div class="card"><h3>🎯 Kursziel</h3><p>Ansprechpartner für Cyber Security im eigenen Unternehmen zu werden – das ist das übergeordnete Ziel der IHK-Weiterbildung IT Cyber Security Advisor.</p></div>
+    <div class="card card-pruef">
+      <h3>IT-Sicherheit vs. Informationssicherheit <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <div class="vgl">
+        <div class="vgl-box"><div class="vgl-eyebrow">IT-Sicherheit</div><h4>Schutz der IT-Systeme</h4><p>Schützt IT-Systeme, die Informationen <em>verarbeiten</em>, vor Gefahren. Beispiele: Handys, Netzwerke, Computer, Server, Programme.</p></div>
+        <div class="vgl-box"><div class="vgl-eyebrow">Informationssicherheit</div><h4>Schutz der Information selbst</h4><p>Schützt Informationen des Unternehmens – unabhängig vom Zustand oder Medium. Schutz muss nicht digital sein (z.B. Türen).</p></div>
+      </div>
+      <div class="merksatz"><span class="merksatz-icon">💡</span><div><strong>Merksatz:</strong> Informationssicherheit ist der übergeordnete Begriff – IT-Sicherheit ist ein Teilbereich davon.</div></div>
+    </div>
+    <div class="card card-pruef">
+      <h3>Die 4 Schutzziele <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <div class="sz-grid">
+        <div class="sz sz-v"><div class="sz-icon">V</div><h4>Vertraulichkeit</h4><p>Nur Befugte dürfen zugreifen</p></div>
+        <div class="sz sz-i"><div class="sz-icon">I</div><h4>Integrität</h4><p>Daten sind korrekt und unverändert</p></div>
+        <div class="sz sz-a"><div class="sz-icon">A</div><h4>Verfügbarkeit</h4><p>Systeme sind bei Bedarf nutzbar</p></div>
+        <div class="sz sz-au"><div class="sz-icon">Au</div><h4>Authentizität</h4><p>Identität ist nachweisbar</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>📚 Weitere Sicherheitsbegriffe</h3>
+      <div class="beg-grid">
+        <div class="beg"><h4>Cyber-Sicherheit</h4><p>Schutz gegen Gefahren aus dem Internet</p></div>
+        <div class="beg"><h4>Datensicherheit</h4><p>Sicherheit aller Daten – Systeme vernachlässigbar</p></div>
+        <div class="beg"><h4>Datenschutz</h4><p>Schutz personenbezogener Daten (DSGVO)</p></div>
+        <div class="beg"><h4>Datensicherung</h4><p>Maßnahme zur Datensicherheit (Backup)</p></div>
+        <div class="beg"><h4>Computersicherheit</h4><p>Schutz einzelner Geräte (= Endpoint Protection)</p></div>
+        <div class="beg"><h4>Gebäudesicherheit</h4><p>Schutz der Räumlichkeiten</p></div>
+        <div class="beg"><h4>Arbeitsschutz</h4><p>Schutz der Arbeitsfähigkeit</p></div>
+      </div>
+    </div>
+    <div class="card card-pruef">
+      <h3>Schwachstelle – Bedrohung – Gefährdung <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <div class="kette">
+        <div class="kette-box k1"><h4>Schwachstelle</h4><p>Bereich mit Defizit. Verursacht noch keinen Schaden. Irrelevant ohne Bedrohung.</p><div class="ex">z.B. schwaches Passwort, offenes Fenster</div></div>
+        <div class="kette-box k2"><h4>+ Bedrohung</h4><p>Ereignis mit negativem Einfluss. Immer existent, im Normalzustand kein Schaden.</p><div class="ex">z.B. Cyberangriff, Naturkatastrophe</div></div>
+        <div class="kette-box k3"><h4>= Gefährdung</h4><p>Bedrohung trifft auf Schwachstelle → Schadensszenario entsteht.</p></div>
+      </div>
+      <div class="formel">Gefährdung = Bedrohung × Schwachstelle</div>
+    </div>
+    <div class="card card-pruef" style="border-left-color:var(--accent-purple);background:linear-gradient(135deg,var(--surface) 0%,var(--accent-purple-light) 100%)">
+      <h3>🎯 Prüfungs-Booster <span class="pruef-label" style="background:var(--accent-purple-light);color:var(--accent-purple)">Häufige IHK-Fragen</span></h3>
+      <p style="margin-bottom:12px"><strong>Diese Themen werden besonders oft geprüft – verinnerliche sie für die MC-Fragen:</strong></p>
+      <div class="beg-grid">
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Schutzziel-Kürzel</h4><p>Manche Quellen nennen nur 3 Ziele: <strong>VIV</strong> (Vertraulichkeit, Integrität, Verfügbarkeit). BSI ergänzt: Authentizität.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 CIA-Triade</h4><p>Englisch: <strong>C</strong>onfidentiality, <strong>I</strong>ntegrity, <strong>A</strong>vailability – internationaler Standardbegriff für die 3 Schutzziele.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Risiko-Formel</h4><p><strong>Risiko = Eintrittswahrscheinlichkeit × Schadenshöhe</strong> – damit wird ein Risiko quantifiziert und priorisiert.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Schutzobjekt vs. Schutzziel</h4><p>Schutzobjekt = das, was geschützt wird (z.B. Server). Schutzziel = welche Eigenschaft (z.B. Verfügbarkeit).</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Restrisiko</h4><p>Risiko, das nach Schutzmaßnahmen verbleibt. Muss von der Geschäftsführung akzeptiert werden.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 4 Risikobehandlungen</h4><p><strong>Vermeiden</strong> · <strong>Vermindern</strong> · <strong>Übertragen</strong> (z.B. Versicherung) · <strong>Akzeptieren</strong></p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Hierarchie</h4><p>Information → IT-System → Cyber → Computer → Endpoint. Information ist <strong>oben</strong>, Endpoint <strong>unten</strong>.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Verbindlichkeit</h4><p>Erweitertes Schutzziel: Aktionen sind nachweisbar zuordenbar (≈ Authentizität + Nicht-Abstreitbarkeit).</p></div>
+      </div>
+      <div class="merksatz" style="background:var(--accent-purple-light);color:var(--accent-purple);border-left-color:var(--accent-purple);margin-top:14px"><span class="merksatz-icon">💪</span><div><strong>Merkhilfe für die Prüfung:</strong> „Eine <em>Bedrohung</em> wird zur <em>Gefährdung</em>, wenn sie eine <em>Schwachstelle</em> ausnutzt – das resultierende <em>Risiko</em> ergibt sich aus Wahrscheinlichkeit × Schaden."</div></div>
+    </div>
+  </div>
+  <div id="m1-karten" class="tab-content">
+    <div class="karten-nav"><button class="btn" onclick="vorKarte('k1')">← Zurück</button><span id="k1-info">Karte 1 von 8</span><button class="btn" onclick="naechsteKarte('k1')">Weiter →</button></div>
+    <div class="karte" id="k1-karte" onclick="flipKarte('k1')"><div class="karte-pruef-badge">Prüfungsrelevant</div><div class="karte-frage" id="k1-frage"></div><div class="karte-antwort" id="k1-antwort"></div><div class="karte-hint">↻ Klicken zum Umdrehen</div></div>
+    <div class="fort-bar"><div class="fort-fill" id="k1-fort" style="width:12.5%"></div></div>
+  </div>
+  <div id="m1-quiz" class="tab-content">
+    <div class="quiz-card" id="q1-card">
+      <div class="quiz-top"><span class="quiz-counter" id="q1-counter">Frage 1 von 17</span><span class="quiz-pruef" id="q1-pruef">Prüfungsrelevant</span></div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="q1-progfill" style="width:6%"></div></div>
+      <div class="quiz-frage" id="q1-frage"></div>
+      <div class="quiz-opts" id="q1-opts"></div>
+      <div class="feedback" id="q1-feedback"></div>
+      <div class="quiz-bottom"><span style="font-size:12px;color:var(--text3);font-weight:500" id="q1-hint">Bitte Antwort auswählen</span><div class="quiz-bottom-right"><button class="btn btn-primary" id="q1-confirm" style="display:none" onclick="bestaetigen(1)">Bestätigen</button><button class="btn btn-primary" id="q1-next" style="display:none" onclick="naechsteFrage(1)">Nächste →</button></div></div>
+    </div>
+    <div class="ergebnis" id="q1-ergebnis" style="display:none">
+      <div class="ergebnis-top"><h3>🎉 Modul 1 abgeschlossen</h3><div class="score-num" id="q1-score"></div><p id="q1-scoretext"></p><div class="ergebnis-btns"><button class="btn" onclick="quizNeu(1)">Nochmal</button><button class="btn btn-primary" onclick="nav('modul2',document.querySelectorAll('.mod-item')[2])">Weiter zu Modul 2 →</button></div></div>
+      <div class="auswertung-title">📊 Auswertung aller Fragen</div>
+      <div id="q1-auswertung"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODUL 2 -->
+<div id="modul2" class="page">
+  <div class="page-header">
+    <div>
+      <span class="page-eyebrow">Modul 02</span>
+      <div class="page-title">Rechtliche Anforderungen und Standards</div>
+      <div class="page-meta"><span>17 Fragen</span><span>8 Lernkarten</span><span>3 Prüfungsthemen</span></div>
+    </div>
+    <div class="pruef-badge"><div class="pruef-dot"></div> Prüfungsrelevant markiert</div>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="tab('m2','inhalt',this)">📖 Lerninhalt</button>
+    <button class="tab" onclick="tab('m2','karten',this)">🎴 Lernkarten</button>
+    <button class="tab" onclick="tab('m2','quiz',this)">✅ Quiz</button>
+  </div>
+  <div id="m2-inhalt" class="tab-content active">
+    <div class="card card-pruef">
+      <h3>⏳ Zeitstrahl: Rechtsgrundlagen <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <div class="timeline">
+        <div class="tl-row"><div class="tl-date">1991–09</div><div class="tl-dot"></div><div class="tl-content"><h4>BSI-Errichtungsgesetz</h4><p>Einführung einer zentralen Behörde für IT-Sicherheit in Deutschland.</p></div></div>
+        <div class="tl-row"><div class="tl-date">06/2009</div><div class="tl-dot"></div><div class="tl-content"><h4>KRITIS-Strategie</h4><p>Definition von 9 KRITIS-Sektoren für kritische Infrastrukturen.</p></div></div>
+        <div class="tl-row"><div class="tl-date">07/2015</div><div class="tl-dot"></div><div class="tl-content"><h4>IT-Sicherheitsgesetz 1.0</h4><p>Ergänzt BSI-Gesetz: Schutz von KRITIS verbessern (§8a).</p></div></div>
+        <div class="tl-row"><div class="tl-date">07/2016</div><div class="tl-dot"></div><div class="tl-content"><h4>NIS-Richtlinie (EU)</h4><p>Hohes Sicherheitsniveau der Netz- und Informationssicherheit in der EU.</p></div></div>
+        <div class="tl-row"><div class="tl-date">05/2021</div><div class="tl-dot"></div><div class="tl-content"><h4>IT-Sicherheitsgesetz 2.0</h4><p>Neuer Sektor: Siedlungsabfallentsorgung. Ab 01.05.2023: Pflicht zu Angriffserkennung.</p></div></div>
+        <div class="tl-row"><div class="tl-date">12/2022</div><div class="tl-dot"></div><div class="tl-content"><h4>NIS2-Richtlinie (EU)</h4><p>Strengere Meldepflichten und verschärfte Sicherheitsanforderungen.</p></div></div>
+        <div class="tl-row"><div class="tl-date">Aktuell</div><div class="tl-dot"></div><div class="tl-content"><h4>NIS2-Umsetzungsgesetz & KRITIS-Dachgesetz</h4><p>Nationale Umsetzung der EU-Regelungen – in Vorbereitung/in Kraft.</p></div></div>
+      </div>
+    </div>
+    <div class="card card-pruef">
+      <h3>🏛️ KRITIS – Kritische Infrastrukturen <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <p>Organisationen mit wichtiger Bedeutung für das staatliche Gemeinwesen. Ausfall würde nachhaltig wirkende Versorgungsengpässe oder dramatische Folgen haben.</p>
+      <div class="merksatz"><span class="merksatz-icon">📋</span><div><strong>Pflichten KRITIS-Betreiber:</strong><br>Kontaktstelle benennen · IT-Störungen melden · IT-Sicherheit auf „Stand der Technik" · Nachweis alle 2 Jahre</div></div>
+    </div>
+    <div class="card">
+      <h3>⚖️ Weitere wichtige Gesetze</h3>
+      <div class="beg-grid">
+        <div class="beg"><h4>DSGVO</h4><p>Schutz personenbezogener Daten in der EU</p></div>
+        <div class="beg"><h4>Cybersecurity Act</h4><p>Mandat für EU-Agentur ENISA</p></div>
+        <div class="beg"><h4>PDSG</h4><p>Patientendatenschutzgesetz</p></div>
+        <div class="beg"><h4>KWG</h4><p>Kreditwesengesetz – IT-Sicherheit für Banken</p></div>
+        <div class="beg"><h4>AI Act</h4><p>EU-Rahmen für KI-Einsatz</p></div>
+        <div class="beg"><h4>DORA</h4><p>Digital Operational Resilience Act</p></div>
+      </div>
+    </div>
+    <div class="card card-pruef">
+      <h3>🔄 ISO/IEC 27001 vs. BSI 200-x <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <div class="compare-grid">
+        <div class="cmp-box"><h4>ISO/IEC 27001</h4>
+          <div class="cmp-row"><span>Fokus</span><span>ISMS-Prozesse</span></div>
+          <div class="cmp-row"><span>Flexibilität</span><span>Sehr flexibel</span></div>
+          <div class="cmp-row"><span>Maßnahmen</span><span>114 allgemein</span></div>
+          <div class="cmp-row"><span>Risikoanalyse</span><span>Erheblicher Aufwand</span></div>
+          <div class="cmp-row"><span>Zertifikat</span><span>3 Jahre</span></div>
+        </div>
+        <div class="cmp-box"><h4>BSI 200-x</h4>
+          <div class="cmp-row"><span>Fokus</span><span>Komplettpaket</span></div>
+          <div class="cmp-row"><span>Flexibilität</span><span>Sehr formal</span></div>
+          <div class="cmp-row"><span>Maßnahmen</span><span>4000+ in 104 Bausteinen</span></div>
+          <div class="cmp-row"><span>Risikoanalyse</span><span>Implizit enthalten</span></div>
+          <div class="cmp-row"><span>Zertifikat</span><span>3 Jahre</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>📘 BSI 200-x Serie</h3>
+      <div class="beg-grid">
+        <div class="beg"><h4>200-1</h4><p>Einführung eines ISMS nach IT-Grundschutz</p></div>
+        <div class="beg"><h4>200-2</h4><p>IT-Grundschutz-Vorgehensweise</p></div>
+        <div class="beg"><h4>200-3</h4><p>Risikoanalyse auf Basis IT-Grundschutz</p></div>
+        <div class="beg"><h4>200-4</h4><p>Business Continuity Management</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>🌐 Weitere Sicherheitsstandards</h3>
+      <div class="beg-grid">
+        <div class="beg"><h4>VdS 10000</h4><p>ISMS für KMU mit begrenzten Ressourcen</p></div>
+        <div class="beg"><h4>CISIS12</h4><p>ISMS in 12 Schritten für KMU/Kommunen</p></div>
+        <div class="beg"><h4>TISAX</h4><p>ISMS in der KFZ-Branche</p></div>
+        <div class="beg"><h4>B3S</h4><p>Branchenspezifische Standards für KRITIS</p></div>
+        <div class="beg"><h4>COBIT</h4><p>IT-Governance Framework</p></div>
+        <div class="beg"><h4>ITIL</h4><p>IT-Servicemanagement</p></div>
+      </div>
+    </div>
+    <div class="card card-pruef" style="border-left-color:var(--accent-purple);background:linear-gradient(135deg,var(--surface) 0%,var(--accent-purple-light) 100%)">
+      <h3>🎯 Prüfungs-Booster <span class="pruef-label" style="background:var(--accent-purple-light);color:var(--accent-purple)">Häufige IHK-Fragen</span></h3>
+      <p style="margin-bottom:12px"><strong>Diese Themen werden besonders oft geprüft – verinnerliche sie für die MC-Fragen:</strong></p>
+      <div class="beg-grid">
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 §8a BSI-Gesetz</h4><p>Verpflichtet KRITIS-Betreiber zu „angemessenen organisatorischen und technischen Vorkehrungen" auf <strong>Stand der Technik</strong>.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 NIS2 vs. NIS</h4><p>NIS2 verschärft NIS: <strong>mehr Sektoren</strong>, strengere Meldepflichten (24h Frühwarnung), höhere Bußgelder.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 KRITIS-Sektoren</h4><p>10 Sektoren: Energie, Wasser, IT/TK, Transport, Gesundheit, Finanzen, Ernährung, Staat, Medien, <strong>Siedlungsabfall</strong>.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 ISO 27001</h4><p><strong>Internationaler</strong> ISMS-Standard. Anhang A: 93 Controls (neu) bzw. 114 (alt). Zertifizierbar.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 BSI 200-2</h4><p>3 Vorgehensweisen: <strong>Basis-Absicherung</strong> (schnell), <strong>Standard</strong> (vollständig), <strong>Kern</strong> (Kronjuwelen).</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Meldepflichten</h4><p>KRITIS muss erhebliche Störungen <strong>unverzüglich</strong> ans BSI melden. Bei NIS2: 24h Frühwarnung + 72h Detail.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Stand der Technik</h4><p>Über „allgemein anerkannten Regeln", noch nicht „Stand der Wissenschaft". Fortschrittlich aber bewährt.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 DSGVO Art. 32</h4><p>„Sicherheit der Verarbeitung" – TOMs (technische und organisatorische Maßnahmen) sind verpflichtend.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 BAIT/VAIT/KAIT</h4><p>BaFin-Anforderungen für Banken/Versicherungen/Kapitalverwaltung – branchenspezifische IT-Sicherheit.</p></div>
+      </div>
+      <div class="merksatz" style="background:var(--accent-purple-light);color:var(--accent-purple);border-left-color:var(--accent-purple);margin-top:14px"><span class="merksatz-icon">💪</span><div><strong>Merkhilfe:</strong> „<em>BSI-Gesetz</em> regelt <em>was</em> KRITIS tun muss, <em>KritisV</em> regelt <em>wer</em> KRITIS ist, <em>NIS2</em> ist die EU-Vorgabe darüber."</div></div>
+    </div>
+  </div>
+  <div id="m2-karten" class="tab-content">
+    <div class="karten-nav"><button class="btn" onclick="vorKarte('k2')">← Zurück</button><span id="k2-info">Karte 1 von 8</span><button class="btn" onclick="naechsteKarte('k2')">Weiter →</button></div>
+    <div class="karte" id="k2-karte" onclick="flipKarte('k2')"><div class="karte-pruef-badge">Prüfungsrelevant</div><div class="karte-frage" id="k2-frage"></div><div class="karte-antwort" id="k2-antwort"></div><div class="karte-hint">↻ Klicken zum Umdrehen</div></div>
+    <div class="fort-bar"><div class="fort-fill" id="k2-fort" style="width:12.5%"></div></div>
+  </div>
+  <div id="m2-quiz" class="tab-content">
+    <div class="quiz-card" id="q2-card">
+      <div class="quiz-top"><span class="quiz-counter" id="q2-counter">Frage 1 von 17</span><span class="quiz-pruef" id="q2-pruef">Prüfungsrelevant</span></div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="q2-progfill" style="width:6%"></div></div>
+      <div class="quiz-frage" id="q2-frage"></div>
+      <div class="quiz-opts" id="q2-opts"></div>
+      <div class="feedback" id="q2-feedback"></div>
+      <div class="quiz-bottom"><span style="font-size:12px;color:var(--text3);font-weight:500" id="q2-hint">Bitte Antwort auswählen</span><div class="quiz-bottom-right"><button class="btn btn-primary" id="q2-confirm" style="display:none" onclick="bestaetigen(2)">Bestätigen</button><button class="btn btn-primary" id="q2-next" style="display:none" onclick="naechsteFrage(2)">Nächste →</button></div></div>
+    </div>
+    <div class="ergebnis" id="q2-ergebnis" style="display:none">
+      <div class="ergebnis-top"><h3>🎉 Modul 2 abgeschlossen</h3><div class="score-num" id="q2-score"></div><p id="q2-scoretext"></p><div class="ergebnis-btns"><button class="btn" onclick="quizNeu(2)">Nochmal</button><button class="btn btn-primary" onclick="nav('modul3',document.querySelectorAll('.mod-item')[3])">Weiter zu Modul 3 →</button></div></div>
+      <div class="auswertung-title">📊 Auswertung aller Fragen</div>
+      <div id="q2-auswertung"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODUL 3 -->
+<div id="modul3" class="page">
+  <div class="page-header">
+    <div>
+      <span class="page-eyebrow">Modul 03</span>
+      <div class="page-title">Prozesse</div>
+      <div class="page-meta"><span>15 Fragen</span><span>7 Lernkarten</span><span>2 Prüfungsthemen</span></div>
+    </div>
+    <div class="pruef-badge"><div class="pruef-dot"></div> Prüfungsrelevant markiert</div>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="tab('m3','inhalt',this)">📖 Lerninhalt</button>
+    <button class="tab" onclick="tab('m3','karten',this)">🎴 Lernkarten</button>
+    <button class="tab" onclick="tab('m3','quiz',this)">✅ Quiz</button>
+  </div>
+  <div id="m3-inhalt" class="tab-content active">
+    <div class="card">
+      <h3>📐 Was ist ein Prozess?</h3>
+      <p>Eine Reihe festgelegter Tätigkeiten, die von Menschen oder Maschinen ausgeführt werden, um ein oder mehrere Ziele zu erreichen. Prozesse werden von spezifischen Ereignissen ausgelöst (<strong>Input</strong>) und haben Ergebnisse (<strong>Output</strong>).</p>
+      <div class="merksatz"><span class="merksatz-icon">💡</span><div><strong>BPM (Business Process Management)</strong> verbindet Strategien und Ziele einer Organisation mit den Erwartungen der Kunden durch End-to-End-Prozesse.</div></div>
+    </div>
+    <div class="card card-pruef">
+      <h3>🏠 Das Prozesshaus <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <div class="ph">
+        <div class="ph-box ph-mgmt"><h4>🎯 Managementprozesse</h4><p>Steuerung des Unternehmens und der Teilbereiche (übergeordnet)</p></div>
+        <div class="ph-box ph-kern"><h4>⭐ Kernprozesse</h4><p>Wertschöpfungskette zur Erfüllung des Kundenwunsches (Kernkompetenz)</p></div>
+        <div class="ph-box ph-support"><h4>🔧 Unterstützungsprozesse</h4><p>Dienen dem Kernprozess – nicht direkt dem Kunden (IT, HR, Buchhaltung)</p></div>
+      </div>
+    </div>
+    <div class="card card-pruef">
+      <h3>🔄 Die 5 Phasen des Prozessmanagements <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <div class="phases">
+        <div class="phase"><div class="phase-num">1</div><p>Prozessarbeit vorbereiten</p></div>
+        <div class="phase"><div class="phase-num">2</div><p>Prozesse strukturieren</p></div>
+        <div class="phase"><div class="phase-num">3</div><p>Prozesse beschreiben</p></div>
+        <div class="phase"><div class="phase-num">4</div><p>Prozesse lenken & verbessern</p></div>
+        <div class="phase"><div class="phase-num">5</div><p>Prozesse stabilisieren</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>👥 Rollen im Prozessmanagement</h3>
+      <div class="beg-grid">
+        <div class="beg"><h4>PM-Verantwortlicher</h4><p>Verantwortlich für das gesamte System</p></div>
+        <div class="beg"><h4>Prozess-Eigner</h4><p>Rechenschaftspflichtig für den Prozess</p></div>
+        <div class="beg"><h4>Prozess-Manager</h4><p>Operativ verantwortlich</p></div>
+        <div class="beg"><h4>Prozess-Experte</h4><p>Führt den Prozess aus</p></div>
+        <div class="beg"><h4>Prozess-Modellierer</h4><p>Designt und modelliert</p></div>
+        <div class="beg"><h4>Prozess-Berater</h4><p>Gibt methodische Unterstützung</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>📝 Prozessnotation und -dokumentation</h3>
+      <p>Prozesse können auf verschiedene Arten dokumentiert werden:</p>
+      <ul>
+        <li>Als Ablaufdiagramm (Flussdiagramm, BPMN 2.0, eEPK)</li>
+        <li>In Tabellenform (Excel)</li>
+        <li>In Textform oder als Kombination</li>
+      </ul>
+      <div class="merksatz"><span class="merksatz-icon">🎨</span><div><strong>EPK (Ereignisgesteuerte Prozesskette):</strong> Ereignisse = Sechsecke (rot), Funktionen = Rechtecke mit abgerundeten Ecken (grün).</div></div>
+    </div>
+    <div class="card">
+      <h3>📊 Reifegradmodell (5 Level)</h3>
+      <div class="reife">
+        <div class="reife-box"><div class="rlvl">L1</div><h4>Initial</h4><p>Prozesse laufen unkontrolliert</p></div>
+        <div class="reife-box"><div class="rlvl">L2</div><h4>Wiederholbar</h4><p>Erfolgreiche Prozesse werden erkannt</p></div>
+        <div class="reife-box"><div class="rlvl">L3</div><h4>Definiert</h4><p>Prozesse sind dokumentiert</p></div>
+        <div class="reife-box"><div class="rlvl">L4</div><h4>Gesteuert</h4><p>Prozesse werden gemessen</p></div>
+        <div class="reife-box"><div class="rlvl">L5</div><h4>Optimiert</h4><p>Kontinuierliche Verbesserung</p></div>
+      </div>
+    </div>
+    <div class="card card-pruef" style="border-left-color:var(--accent-purple);background:linear-gradient(135deg,var(--surface) 0%,var(--accent-purple-light) 100%)">
+      <h3>🎯 Prüfungs-Booster <span class="pruef-label" style="background:var(--accent-purple-light);color:var(--accent-purple)">Häufige IHK-Fragen</span></h3>
+      <p style="margin-bottom:12px"><strong>Diese Themen werden besonders oft geprüft – verinnerliche sie für die MC-Fragen:</strong></p>
+
+      <div class="card" style="background:var(--bg-alt);border:1px solid var(--accent-purple);margin-bottom:14px">
+        <h3 style="color:var(--accent-purple)">🔄 PDCA-Zyklus (Deming-Kreis) <span class="pruef-label" style="background:var(--accent-red-light);color:var(--accent-red);margin-left:auto">SEHR häufig geprüft!</span></h3>
+        <p>Der PDCA-Zyklus ist das <strong>Herzstück jedes Managementsystems</strong> (auch ISMS!) und wird in fast jeder IHK-Prüfung abgefragt:</p>
+        <div class="phases" style="margin-top:14px">
+          <div class="phase" style="background:var(--primary-light)"><div class="phase-num" style="background:var(--primary)">P</div><p style="font-weight:600;color:var(--primary)">PLAN<br><span style="font-weight:400;font-size:10px">Ziele & Maßnahmen planen</span></p></div>
+          <div class="phase" style="background:var(--accent-teal-light)"><div class="phase-num" style="background:var(--accent-teal)">D</div><p style="font-weight:600;color:var(--accent-teal)">DO<br><span style="font-weight:400;font-size:10px">Umsetzen & ausprobieren</span></p></div>
+          <div class="phase" style="background:var(--accent-amber-light)"><div class="phase-num" style="background:var(--accent-amber)">C</div><p style="font-weight:600;color:var(--accent-amber)">CHECK<br><span style="font-weight:400;font-size:10px">Zielerreichung prüfen</span></p></div>
+          <div class="phase" style="background:var(--accent-pink-light)"><div class="phase-num" style="background:var(--accent-pink)">A</div><p style="font-weight:600;color:var(--accent-pink)">ACT<br><span style="font-weight:400;font-size:10px">Als Standard etablieren</span></p></div>
+        </div>
+        <p style="margin-top:12px;font-size:12px"><strong>Merksatz:</strong> Plan → Do → Check → Act → wieder Plan (kontinuierliche Schleife = KVP).</p>
+      </div>
+
+      <div class="beg-grid">
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 KVP</h4><p><strong>K</strong>ontinuierlicher <strong>V</strong>erbesserungs<strong>p</strong>rozess – Ergebnis des PDCA-Zyklus, durchläuft fortlaufend.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Prozess-Definition</h4><p>Input → Aktivitäten → Output. Hat <strong>Auslöser</strong>, <strong>Ergebnis</strong> und <strong>Verantwortlichen</strong>.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 EFQM</h4><p>European Foundation for Quality Management – Excellence-Modell für Prozess-/Qualitätsmanagement.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 BPMN 2.0</h4><p>Business Process Model and Notation – internationaler Standard zur grafischen Prozessmodellierung.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Rolle vs. Person</h4><p>Eine Person kann mehrere Rollen haben. Eine Rolle kann von mehreren Personen ausgeübt werden.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 RACI-Matrix</h4><p><strong>R</strong>esponsible · <strong>A</strong>ccountable · <strong>C</strong>onsulted · <strong>I</strong>nformed – Verantwortungsmatrix.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 KPIs</h4><p>Key Performance Indicators – messen Prozess-Effektivität (Reifegrad ab Level 4 nötig).</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Prozessoptimierung</h4><p>Zwei Wege: <strong>KVP</strong> (kleine Schritte, mit Lerneffekt) oder <strong>Re-Engineering</strong> (großer Wurf, ohne Lerneffekt).</p></div>
+      </div>
+      <div class="merksatz" style="background:var(--accent-purple-light);color:var(--accent-purple);border-left-color:var(--accent-purple);margin-top:14px"><span class="merksatz-icon">💪</span><div><strong>Merkhilfe:</strong> „PDCA = die Zauberformel der Norm. Egal ob ISO 9001, ISO 27001 oder BSI – alles basiert auf <em>Plan-Do-Check-Act</em>."</div></div>
+    </div>
+  </div>
+  <div id="m3-karten" class="tab-content">
+    <div class="karten-nav"><button class="btn" onclick="vorKarte('k3')">← Zurück</button><span id="k3-info">Karte 1 von 7</span><button class="btn" onclick="naechsteKarte('k3')">Weiter →</button></div>
+    <div class="karte" id="k3-karte" onclick="flipKarte('k3')"><div class="karte-pruef-badge">Prüfungsrelevant</div><div class="karte-frage" id="k3-frage"></div><div class="karte-antwort" id="k3-antwort"></div><div class="karte-hint">↻ Klicken zum Umdrehen</div></div>
+    <div class="fort-bar"><div class="fort-fill" id="k3-fort" style="width:14.3%"></div></div>
+  </div>
+  <div id="m3-quiz" class="tab-content">
+    <div class="quiz-card" id="q3-card">
+      <div class="quiz-top"><span class="quiz-counter" id="q3-counter">Frage 1 von 15</span><span class="quiz-pruef" id="q3-pruef">Prüfungsrelevant</span></div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="q3-progfill" style="width:7%"></div></div>
+      <div class="quiz-frage" id="q3-frage"></div>
+      <div class="quiz-opts" id="q3-opts"></div>
+      <div class="feedback" id="q3-feedback"></div>
+      <div class="quiz-bottom"><span style="font-size:12px;color:var(--text3);font-weight:500" id="q3-hint">Bitte Antwort auswählen</span><div class="quiz-bottom-right"><button class="btn btn-primary" id="q3-confirm" style="display:none" onclick="bestaetigen(3)">Bestätigen</button><button class="btn btn-primary" id="q3-next" style="display:none" onclick="naechsteFrage(3)">Nächste →</button></div></div>
+    </div>
+    <div class="ergebnis" id="q3-ergebnis" style="display:none">
+      <div class="ergebnis-top"><h3>🎉 Modul 3 abgeschlossen</h3><div class="score-num" id="q3-score"></div><p id="q3-scoretext"></p><div class="ergebnis-btns"><button class="btn" onclick="quizNeu(3)">Nochmal</button><button class="btn btn-primary" onclick="nav('modul10',document.querySelectorAll('.mod-item')[10])">Zur Prüfung →</button></div></div>
+      <div class="auswertung-title">📊 Auswertung aller Fragen</div>
+      <div id="q3-auswertung"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODUL 4 -->
+<div id="modul4" class="page">
+  <div class="page-header">
+    <div>
+      <span class="page-eyebrow">Modul 04</span>
+      <div class="page-title">IS-Leitlinie und weitere Dokumententypen</div>
+      <div class="page-meta"><span>16 Fragen</span><span>8 Lernkarten</span><span>3 Prüfungsthemen</span></div>
+    </div>
+    <div class="pruef-badge"><div class="pruef-dot"></div> Prüfungsrelevant markiert</div>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="tab('m4','inhalt',this)">📖 Lerninhalt</button>
+    <button class="tab" onclick="tab('m4','karten',this)">🎴 Lernkarten</button>
+    <button class="tab" onclick="tab('m4','quiz',this)">✅ Quiz</button>
+  </div>
+  <div id="m4-inhalt" class="tab-content active">
+
+    <div class="card card-pruef">
+      <h3>📜 Die drei Funktionen der IS-Leitlinie <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <div class="sz-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="sz sz-v"><div class="sz-icon">🧭</div><h4>Orientierung &amp; Richtlinien</h4><p>Gemeinsames Verständnis für Sicherheitsziele</p></div>
+        <div class="sz sz-i"><div class="sz-icon">⚖️</div><h4>Verpflichtung &amp; Verantwortung</h4><p>Bedeutung der Informationssicherheit im Unternehmen</p></div>
+        <div class="sz sz-au"><div class="sz-icon">📢</div><h4>Kommunikation</h4><p>Austausch mit Mitarbeitern, Kunden, Lieferanten</p></div>
+      </div>
+      <div class="merksatz"><span class="merksatz-icon">💡</span><div><strong>Schutzziele:</strong> Mindestens Vertraulichkeit, Integrität und Verfügbarkeit betrachten.</div></div>
+    </div>
+
+    <div class="card card-pruef">
+      <h3>📝 Pflichtinhalte der IS-Leitlinie <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <p>Eine IS-Leitlinie ist das zentrale Grundsatzdokument zur Informationssicherheit eines Unternehmens. Sie wird von der Geschäftsführung verabschiedet und muss folgende Inhalte umfassen:</p>
+      <div class="beg-grid" style="margin-top:14px">
+        <div class="beg"><h4>🏢 Geltungsbereich</h4><p>Umfang des Unternehmens</p></div>
+        <div class="beg"><h4>⭐ Bedeutung</h4><p>Stellenwert der Informationssicherheit</p></div>
+        <div class="beg"><h4>👔 GF-Verantwortung</h4><p>Übernahme durch Geschäftsführung</p></div>
+        <div class="beg"><h4>⚖️ Gesetze</h4><p>Rechtliche &amp; regulatorische Auflagen</p></div>
+        <div class="beg"><h4>🎯 Sicherheitsziele</h4><p>Ziele &amp; Strategie festlegen</p></div>
+        <div class="beg"><h4>👥 Organisation &amp; Rollen</h4><p>Struktur &amp; Verantwortlichkeiten</p></div>
+        <div class="beg"><h4>⚙️ Kernprozesse</h4><p>Wichtige Geschäftsprozesse</p></div>
+      </div>
+      <div class="merksatz" style="margin-top:14px"><span class="merksatz-icon">➕</span><div><strong>Zusätzlich:</strong> Sicherheitsprozess initiieren · Benennung des Beauftragten (ISB) · Bekanntmachung an alle Mitarbeiter</div></div>
+    </div>
+
+    <div class="card card-pruef">
+      <h3>🏛️ Dokumentenhierarchie im ISMS <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <p>Dokumente im Informationssicherheits-Managementsystem sind hierarchisch aufgebaut – von strategisch (lang gültig) bis operativ (laufend aktualisiert):</p>
+      <div class="ph" style="margin-top:14px">
+        <div class="ph-box ph-mgmt"><h4>1. IS-Leitlinie <span style="font-size:11px;font-weight:500;opacity:.7">· 5–10 Jahre · GF</span></h4><p>Strategische Ausrichtung, Ziele, Verantwortung (von der Geschäftsführung verabschiedet)</p></div>
+        <div class="ph-box ph-kern"><h4>2. ISMS-Handbücher <span style="font-size:11px;font-weight:500;opacity:.7">· 3–5 Jahre · GF/ISB</span></h4><p>Übergeordnete Regelungen, Rollen und Prozesse des ISMS</p></div>
+        <div class="ph-box ph-support"><h4>3. Sicherheitskonzepte <span style="font-size:11px;font-weight:500;opacity:.7">· 1–2 Jahre · ISB/op.OEs</span></h4><p>Konkrete Schutzmaßnahmen für bestimmte Objekte/Bereiche</p></div>
+        <div class="ph-box" style="background:var(--accent-amber-light);color:var(--accent-amber)"><h4 style="color:var(--accent-amber)">4. Umsetzungskonzepte &amp; technische Richtlinien <span style="font-size:11px;font-weight:500;opacity:.7">· jährlich</span></h4><p style="color:var(--accent-amber)">Technische Detail-Vorgaben zur konkreten Umsetzung</p></div>
+        <div class="ph-box" style="background:var(--accent-pink-light);color:var(--accent-pink)"><h4 style="color:var(--accent-pink)">5. Arbeitsanweisungen &amp; Knowledgebases <span style="font-size:11px;font-weight:500;opacity:.7">· laufend · ISB/op.OEs</span></h4><p style="color:var(--accent-pink)">Tägliche Anleitungen und Wissensdatenbanken für Mitarbeiter</p></div>
+      </div>
+      <div class="merksatz" style="margin-top:14px"><span class="merksatz-icon">📘</span><div><strong>Merksatz:</strong> Je höher in der Hierarchie, desto länger die Gültigkeit und desto strategischer die Ausrichtung. op.OEs = operative Organisationseinheiten.</div></div>
+    </div>
+
+    <div class="card">
+      <h3>🔗 Eingangsfaktoren für die IS-Leitlinie</h3>
+      <p>Die IS-Leitlinie leitet sich aus übergeordneten Strategien und Rahmenbedingungen ab:</p>
+      <div class="beg-grid" style="margin-top:12px">
+        <div class="beg"><h4>Geschäftsstrategie</h4><p>Übergeordnete Unternehmensziele</p></div>
+        <div class="beg"><h4>Risikostrategie</h4><p>Umgang mit Unternehmensrisiken</p></div>
+        <div class="beg"><h4>IT-Strategie</h4><p>Ausrichtung der IT-Landschaft</p></div>
+        <div class="beg"><h4>Gesetze &amp; Normen</h4><p>Rechtliche Anforderungen (z.B. DSGVO, BSI)</p></div>
+        <div class="beg"><h4>Externe Richtlinien</h4><p>Branchenstandards, Verträge</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🔄 Managementsysteme und Synergien</h3>
+      <p>Informationssicherheit steht nicht allein – drei verwandte Managementsysteme arbeiten zusammen:</p>
+      <div class="compare-grid" style="grid-template-columns:repeat(3,1fr);margin-top:14px">
+        <div class="cmp-box"><h4>🔐 Datenschutz</h4>
+          <div class="cmp-row"><span>Fokus</span><span>Personensicht</span></div>
+          <div class="cmp-row"><span>Schutzziel</span><span>Vertraulichkeit</span></div>
+          <div class="cmp-row"><span>Maßnahmen</span><span>TOMs</span></div>
+          <div class="cmp-row"><span>Rolle</span><span>DS-Beauftragter</span></div>
+          <div class="cmp-row"><span>Prüfung</span><span>DS-Audits</span></div>
+        </div>
+        <div class="cmp-box" style="border-color:var(--primary)"><h4>🛡️ Informationssicherheit</h4>
+          <div class="cmp-row"><span>Fokus</span><span>Geschäftssicht</span></div>
+          <div class="cmp-row"><span>Schutzziel</span><span>V·I·V (+A)</span></div>
+          <div class="cmp-row"><span>Maßnahmen</span><span>Sicherheitsvorgaben</span></div>
+          <div class="cmp-row"><span>Rolle</span><span>IS-Beauftragter (ISB)</span></div>
+          <div class="cmp-row"><span>Prüfung</span><span>Grundschutzcheck/Audits</span></div>
+        </div>
+        <div class="cmp-box"><h4>🚨 Notfall (BCM)</h4>
+          <div class="cmp-row"><span>Fokus</span><span>Geschäftserhalt</span></div>
+          <div class="cmp-row"><span>Schutzziel</span><span>Verfügbarkeit</span></div>
+          <div class="cmp-row"><span>Maßnahmen</span><span>Notfallvorsorge</span></div>
+          <div class="cmp-row"><span>Rolle</span><span>Notfallbeauftragter</span></div>
+          <div class="cmp-row"><span>Prüfung</span><span>Notfallübungen</span></div>
+        </div>
+      </div>
+      <div class="merksatz" style="margin-top:14px"><span class="merksatz-icon">🔗</span><div>Die Informationssicherheit hat eine <strong>Geschäftssicht</strong> und umfasst sowohl Informationen als auch Prozesse – sie ist damit übergeordnet und verbindet Datenschutz und Notfallmanagement.</div></div>
+    </div>
+
+    <div class="card">
+      <h3>📅 Gültigkeits- und Aktualisierungszyklen</h3>
+      <p>Die verschiedenen Dokumententypen werden in unterschiedlichen Rhythmen überprüft und aktualisiert:</p>
+      <ul>
+        <li><strong>IS-Leitlinie:</strong> alle 5–10 Jahre (strategisch, selten ändernd)</li>
+        <li><strong>ISMS-Handbücher:</strong> alle 3–5 Jahre</li>
+        <li><strong>Sicherheitskonzepte:</strong> alle 1–2 Jahre</li>
+        <li><strong>Technische Richtlinien &amp; Umsetzungskonzepte:</strong> jährlich</li>
+        <li><strong>Arbeitsanweisungen &amp; Knowledgebases:</strong> laufend, anlassbezogen</li>
+      </ul>
+    </div>
+
+    <div class="card card-pruef" style="border-left-color:var(--accent-purple);background:linear-gradient(135deg,var(--surface) 0%,var(--accent-purple-light) 100%)">
+      <h3>🎯 Prüfungs-Booster <span class="pruef-label" style="background:var(--accent-purple-light);color:var(--accent-purple)">Häufige IHK-Fragen</span></h3>
+      <p style="margin-bottom:12px"><strong>Diese Themen werden besonders oft geprüft – verinnerliche sie für die MC-Fragen:</strong></p>
+      <div class="beg-grid">
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Pyramidenform</h4><p>Dokumentenhierarchie wird oft als <strong>Pyramide</strong> dargestellt: oben wenige strategische Doks, unten viele operative.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Top-Down-Prinzip</h4><p>IS-Leitlinie wird <strong>von oben</strong> verabschiedet (GF) und von dort heruntergebrochen auf alle Ebenen.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 ISB - Aufgaben</h4><p>Steuert ISMS · berät Geschäftsführung · koordiniert Maßnahmen · ist <strong>Stabstelle</strong> (nicht in Linie!).</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Bekanntmachung</h4><p>Pflicht: an <strong>alle Mitarbeitenden</strong> – nicht nur IT! Üblich: Intranet, Onboarding, jährliche Schulung.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Sicherheitskonzept</h4><p>Konkretisiert die Leitlinie für ein bestimmtes Schutzobjekt/Bereich. Mittelschicht der Pyramide.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Richtlinie vs. Anweisung</h4><p><strong>Richtlinie</strong>: was/warum (verbindlich, abstrakt). <strong>Arbeitsanweisung</strong>: wie genau (konkret, Schritt-für-Schritt).</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 ISMS-Handbuch</h4><p>Dokumentiert das gesamte ISMS – Rollen, Prozesse, Wirkungsweise. Pflicht bei Zertifizierung.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Lebenszyklus</h4><p>Erstellen → Prüfen → Freigeben → Verteilen → Anwenden → <strong>Überprüfen</strong> → Aktualisieren oder Archivieren.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Synergien nutzen</h4><p>Datenschutz · Informationssicherheit · BCM · Risiko · Service – alle ergänzen sich, gemeinsam stärker als getrennt.</p></div>
+      </div>
+      <div class="merksatz" style="background:var(--accent-purple-light);color:var(--accent-purple);border-left-color:var(--accent-purple);margin-top:14px"><span class="merksatz-icon">💪</span><div><strong>Merkhilfe:</strong> „<em>Leitlinie</em> = WAS wollen wir? · <em>Sicherheitskonzept</em> = WIE schützen wir es? · <em>Arbeitsanweisung</em> = WIE machen wir es konkret?"</div></div>
+    </div>
+
+    <div class="card" style="border:1px solid var(--accent-amber);background:var(--accent-amber-light)">
+      <h3 style="color:var(--accent-amber)">📝 Hilfe für die Projektarbeit</h3>
+      <p style="color:var(--accent-amber);font-weight:500">Modul 4 ist die direkte Vorbereitung auf deine Projektarbeit (30% der Gesamtnote)! Dort musst du selbst eine IS-Leitlinie als Teil eines ISMS-Konzepts erstellen.</p>
+      <ul style="margin-top:8px;color:var(--accent-amber)">
+        <li><strong>Kapitel 1 deiner Projektarbeit</strong> = Einführung mit Geltungsbereich, Ziel, Rollen, KVP, Inkrafttreten – das ist genau eine kleine IS-Leitlinie!</li>
+        <li>Achte auf den <strong>Unternehmensbezug</strong> – generische Texte werden in der Verteidigung abgewertet.</li>
+        <li>Nutze die Leitlinien-Pflichtinhalte als <strong>Checkliste</strong>: Hast du alle 7 Punkte abgedeckt?</li>
+      </ul>
+    </div>
+  </div>
+  <div id="m4-karten" class="tab-content">
+    <div class="karten-nav"><button class="btn" onclick="vorKarte('k4')">← Zurück</button><span id="k4-info">Karte 1 von 8</span><button class="btn" onclick="naechsteKarte('k4')">Weiter →</button></div>
+    <div class="karte" id="k4-karte" onclick="flipKarte('k4')"><div class="karte-pruef-badge">Prüfungsrelevant</div><div class="karte-frage" id="k4-frage"></div><div class="karte-antwort" id="k4-antwort"></div><div class="karte-hint">↻ Klicken zum Umdrehen</div></div>
+    <div class="fort-bar"><div class="fort-fill" id="k4-fort" style="width:12.5%"></div></div>
+  </div>
+  <div id="m4-quiz" class="tab-content">
+    <div class="quiz-card" id="q4-card">
+      <div class="quiz-top"><span class="quiz-counter" id="q4-counter">Frage 1 von 16</span><span class="quiz-pruef" id="q4-pruef">Prüfungsrelevant</span></div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="q4-progfill" style="width:6%"></div></div>
+      <div class="quiz-frage" id="q4-frage"></div>
+      <div class="quiz-opts" id="q4-opts"></div>
+      <div class="feedback" id="q4-feedback"></div>
+      <div class="quiz-bottom"><span style="font-size:12px;color:var(--text3);font-weight:500" id="q4-hint">Bitte Antwort auswählen</span><div class="quiz-bottom-right"><button class="btn btn-primary" id="q4-confirm" style="display:none" onclick="bestaetigen(4)">Bestätigen</button><button class="btn btn-primary" id="q4-next" style="display:none" onclick="naechsteFrage(4)">Nächste →</button></div></div>
+    </div>
+    <div class="ergebnis" id="q4-ergebnis" style="display:none">
+      <div class="ergebnis-top"><h3>🎉 Modul 4 abgeschlossen</h3><div class="score-num" id="q4-score"></div><p id="q4-scoretext"></p><div class="ergebnis-btns"><button class="btn" onclick="quizNeu(4)">Nochmal</button><button class="btn btn-primary" onclick="nav('modul10',document.querySelectorAll('.mod-item')[10])">Zur Prüfung →</button></div></div>
+      <div class="auswertung-title">📊 Auswertung aller Fragen</div>
+      <div id="q4-auswertung"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODUL 5 -->
+<div id="modul5" class="page">
+  <div class="page-header">
+    <div>
+      <span class="page-eyebrow">Modul 05</span>
+      <div class="page-title">ISMS-Methodik (Sicherheitskonzept)</div>
+      <div class="page-meta"><span>16 Fragen</span><span>8 Lernkarten</span><span>4 Prüfungsthemen</span></div>
+    </div>
+    <div class="pruef-badge"><div class="pruef-dot"></div> Prüfungsrelevant markiert</div>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="tab('m5','inhalt',this)">📖 Lerninhalt</button>
+    <button class="tab" onclick="tab('m5','karten',this)">🎴 Lernkarten</button>
+    <button class="tab" onclick="tab('m5','quiz',this)">✅ Quiz</button>
+  </div>
+  <div id="m5-inhalt" class="tab-content active">
+
+    <div class="card card-pruef">
+      <h3>🔄 Überblick ISMS-Methode nach BSI 200-2 <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <p>Die ISMS-Methodik nach BSI-Standard 200-2 ist die systematische Herangehensweise zur Einführung und Aufrechterhaltung eines Informationssicherheits-Managementsystems. Das Ergebnis des Prozesses ist das <strong>Sicherheitskonzept</strong>.</p>
+      <div class="phases" style="grid-template-columns:repeat(4,1fr);margin-top:14px">
+        <div class="phase"><div class="phase-num">1</div><p>Strukturanalyse<br><span style="font-weight:400;font-size:10px">(Ist-Zustand)</span></p></div>
+        <div class="phase"><div class="phase-num">2</div><p>Schutzbedarfs-<br>feststellung</p></div>
+        <div class="phase"><div class="phase-num">3</div><p>Modellierung<br><span style="font-weight:400;font-size:10px">(Bausteine)</span></p></div>
+        <div class="phase"><div class="phase-num">4</div><p>IT-Grundschutz-<br>Check</p></div>
+      </div>
+      <div class="phases" style="grid-template-columns:repeat(3,1fr);margin-top:10px">
+        <div class="phase"><div class="phase-num">5</div><p>Risikoanalyse<br><span style="font-weight:400;font-size:10px">(wo nötig)</span></p></div>
+        <div class="phase"><div class="phase-num">6</div><p>Konsolidierung</p></div>
+        <div class="phase"><div class="phase-num">7</div><p>Umsetzung der<br>Maßnahmen</p></div>
+      </div>
+      <div class="merksatz"><span class="merksatz-icon">💡</span><div><strong>Quelle:</strong> BSI-Standard 200-2 – IT-Grundschutz-Vorgehensweise. Der Prozess wird dauerhaft wiederholt (KVP) – Aufrechterhaltung und kontinuierliche Verbesserung.</div></div>
+    </div>
+
+    <div class="card card-pruef">
+      <h3>🎯 Die 3 Absicherungsstufen <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <p>Vor Beginn der Methodik wird entschieden, mit welcher Absicherungsstufe gestartet wird. Jede Stufe hat einen anderen Detailgrad und Aufwand:</p>
+      <div class="ph" style="margin-top:14px">
+        <div class="ph-box ph-support"><h4>🚀 Basis-Absicherung <span style="font-size:11px;font-weight:500;opacity:.7">· schneller Einstieg</span></h4><p>Schnelle Umsetzung der wichtigsten Grundlagen. Ideal für Einsteiger. Bausteine werden vereinfacht angewendet.</p></div>
+        <div class="ph-box ph-mgmt"><h4>🎯 Kern-Absicherung <span style="font-size:11px;font-weight:500;opacity:.7">· Kronjuwelen zuerst</span></h4><p>Fokus auf die wichtigsten Werte („Kronjuwelen"). Diese werden identifiziert und zuerst geschützt.</p></div>
+        <div class="ph-box ph-kern"><h4>⭐ Standard-Absicherung <span style="font-size:11px;font-weight:500;opacity:.7">· vollständig</span></h4><p>Vollständige Umsetzung aller BSI-Anforderungen. Basis für Zertifizierung nach ISO 27001 auf Basis IT-Grundschutz.</p></div>
+      </div>
+      <div class="merksatz"><span class="merksatz-icon">🎓</span><div><strong>Tipp für die Projektarbeit:</strong> Für die IHK-Projektarbeit wird meist die <strong>Standard-Absicherung</strong> verwendet, da hier alle Schritte (Strukturanalyse, Schutzbedarf, Modellierung, IT-Grundschutz-Check, Risikoanalyse) durchlaufen werden.</div></div>
+    </div>
+
+    <div class="card card-pruef">
+      <h3>🏗️ Strukturanalyse – Grundsätze <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <p>Die Strukturanalyse erfasst den Ist-Zustand: alle zu schützenden Objekte und ihre Abhängigkeiten. Gegliedert nach 6 Schichten:</p>
+      <div class="phases" style="grid-template-columns:repeat(6,1fr);margin-top:14px">
+        <div class="phase"><p style="font-weight:600;font-size:11px">Informationen</p></div>
+        <div class="phase"><p style="font-weight:600;font-size:11px">Prozesse</p></div>
+        <div class="phase"><p style="font-weight:600;font-size:11px">Anwendungen</p></div>
+        <div class="phase"><p style="font-weight:600;font-size:11px">IT-Systeme</p></div>
+        <div class="phase"><p style="font-weight:600;font-size:11px">Netze</p></div>
+        <div class="phase"><p style="font-weight:600;font-size:11px">Räume</p></div>
+      </div>
+      <div class="merksatz" style="margin-top:14px"><span class="merksatz-icon">📐</span><div><strong>3 Grundsätze der Strukturanalyse:</strong><br>1. Jedes Objekt ist <strong>genau einmal</strong> vorhanden<br>2. Jedes Objekt muss eine Abhängigkeit von einer <strong>höheren Ebene</strong> erhalten<br>3. Abhängigkeiten sind <strong>transitiv</strong> (vererben sich nach unten)</div></div>
+    </div>
+
+    <div class="card card-pruef">
+      <h3>🛡️ Schutzbedarfsfeststellung <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <p>Für jedes Objekt wird der Schutzbedarf je Schutzziel (Verfügbarkeit, Vertraulichkeit, Integrität) festgelegt. Es gibt drei Kategorien:</p>
+      <div class="sz-grid" style="grid-template-columns:repeat(3,1fr);margin-top:14px">
+        <div class="sz" style="background:var(--accent-green-light)"><div class="sz-icon" style="background:var(--accent-green)">N</div><h4 style="color:var(--accent-green)">Normal</h4><p style="color:var(--accent-green)">Überschaubare Schäden<br><em>V: nicht zeitkritisch · C: öffentlich · I: normal</em></p></div>
+        <div class="sz" style="background:var(--accent-amber-light)"><div class="sz-icon" style="background:var(--accent-amber)">H</div><h4 style="color:var(--accent-amber)">Hoch</h4><p style="color:var(--accent-amber)">Beträchtliche Schäden<br><em>V: zeitlich relevant · C: intern · I: hoch</em></p></div>
+        <div class="sz" style="background:var(--accent-red-light)"><div class="sz-icon" style="background:var(--accent-red)">S</div><h4 style="color:var(--accent-red)">Sehr hoch</h4><p style="color:var(--accent-red)">Existenzbedrohend<br><em>V: zeitkritisch · C: vertraulich · I: sehr hoch</em></p></div>
+      </div>
+    </div>
+
+    <div class="card card-pruef">
+      <h3>⚖️ Die 3 Vererbungs-Effekte <span class="pruef-label">Prüfungsrelevant</span></h3>
+      <p>Der Schutzbedarf wird von oben nach unten vererbt. Dabei gelten drei Effekte:</p>
+      <div class="ph" style="margin-top:14px">
+        <div class="ph-box" style="background:var(--accent-red-light)"><h4 style="color:var(--accent-red)">🔺 Maximumprinzip</h4><p style="color:var(--accent-red)">Eine Komponente erbt den <strong>höchsten</strong> Schutzbedarf aller darauf aufbauenden Komponenten.</p><div style="font-size:11px;margin-top:6px;font-style:italic;color:var(--accent-red)">Beispiel: GP02 nutzt I05 (sehr hoch) und I06 (normal) → GP02 ist „sehr hoch"</div></div>
+        <div class="ph-box" style="background:var(--accent-amber-light)"><h4 style="color:var(--accent-amber)">➕ Kumulationseffekt</h4><p style="color:var(--accent-amber)">Mehrere kleine Schutzbedarfe können gemeinsam zu einem <strong>höheren</strong> werden (Bündelung).</p><div style="font-size:11px;margin-top:6px;font-style:italic;color:var(--accent-amber)">Beispiel: Wenn viele „hoch"-Systeme über EIN Netz laufen → Netz wird „sehr hoch"</div></div>
+        <div class="ph-box" style="background:var(--accent-green-light)"><h4 style="color:var(--accent-green)">➗ Verteilungseffekt</h4><p style="color:var(--accent-green)">Bei redundanter Auslegung kann der Schutzbedarf einer einzelnen Komponente <strong>sinken</strong>.</p><div style="font-size:11px;margin-top:6px;font-style:italic;color:var(--accent-green)">Beispiel: Bei automatischem Failover genügt „hoch" pro Server statt „sehr hoch"</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🧩 Modellierung – Bausteine auswählen</h3>
+      <p>Nach der Schutzbedarfsfeststellung werden aus dem <strong>IT-Grundschutz-Kompendium</strong> passende Bausteine ausgewählt und den Objekten zugeordnet. Jeder Baustein enthält konkrete Sicherheitsanforderungen.</p>
+      <div class="beg-grid" style="margin-top:12px">
+        <div class="beg"><h4>🏛️ ISMS</h4><p>Managementsysteme, Organisation</p></div>
+        <div class="beg"><h4>👥 ORP</h4><p>Organisation & Personal</p></div>
+        <div class="beg"><h4>🛠️ CON</h4><p>Konzeption & Vorgehensweise</p></div>
+        <div class="beg"><h4>⚙️ OPS</h4><p>Betrieb (Operations)</p></div>
+        <div class="beg"><h4>🔒 DER</h4><p>Detektion & Reaktion</p></div>
+        <div class="beg"><h4>🏢 INF</h4><p>Infrastruktur (Räume, Gebäude)</p></div>
+        <div class="beg"><h4>🌐 NET</h4><p>Netze & Kommunikation</p></div>
+        <div class="beg"><h4>💻 SYS</h4><p>IT-Systeme</p></div>
+        <div class="beg"><h4>📱 APP</h4><p>Anwendungen</p></div>
+        <div class="beg"><h4>🏭 IND</h4><p>Industrielle IT (ICS/SCADA)</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>✅ IT-Grundschutz-Check</h3>
+      <p>Der IT-Grundschutz-Check vergleicht die Anforderungen aus den gewählten Bausteinen mit dem tatsächlichen Umsetzungsstand (Soll-Ist-Vergleich). Jede Anforderung wird bewertet:</p>
+      <div class="sz-grid" style="grid-template-columns:repeat(4,1fr);margin-top:14px">
+        <div class="sz" style="background:var(--accent-green-light)"><div class="sz-icon" style="background:var(--accent-green)">✓</div><h4 style="color:var(--accent-green)">Ja</h4><p style="color:var(--accent-green)">Vollständig umgesetzt</p></div>
+        <div class="sz" style="background:var(--accent-amber-light)"><div class="sz-icon" style="background:var(--accent-amber)">~</div><h4 style="color:var(--accent-amber)">Teilweise</h4><p style="color:var(--accent-amber)">Maßnahme teilweise umgesetzt</p></div>
+        <div class="sz" style="background:var(--accent-red-light)"><div class="sz-icon" style="background:var(--accent-red)">✗</div><h4 style="color:var(--accent-red)">Nein</h4><p style="color:var(--accent-red)">Noch nicht umgesetzt</p></div>
+        <div class="sz"><div class="sz-icon" style="background:var(--text3)">—</div><h4>Entbehrlich</h4><p>Nicht relevant im Kontext</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🚨 Risikoanalyse (BSI 200-3)</h3>
+      <p>Eine ergänzende Risikoanalyse wird durchgeführt, wenn:</p>
+      <ul>
+        <li>Komponenten einen <strong>hohen oder sehr hohen Schutzbedarf</strong> haben</li>
+        <li>Für ein Objekt <strong>kein passender Baustein</strong> existiert</li>
+        <li>Das Objekt in einer <strong>untypischen Umgebung</strong> betrieben wird</li>
+      </ul>
+      <div class="merksatz" style="margin-top:14px"><span class="merksatz-icon">🎯</span><div><strong>4 Risikobehandlungsoptionen:</strong> Vermeiden · Vermindern · Übertragen (z.B. Versicherung) · Akzeptieren</div></div>
+    </div>
+
+    <div class="card card-pruef" style="border-left-color:var(--accent-purple);background:linear-gradient(135deg,var(--surface) 0%,var(--accent-purple-light) 100%)">
+      <h3>🎯 Prüfungs-Booster <span class="pruef-label" style="background:var(--accent-purple-light);color:var(--accent-purple)">Häufige IHK-Fragen</span></h3>
+      <p style="margin-bottom:12px"><strong>Diese Themen werden besonders oft geprüft – verinnerliche sie für die MC-Fragen:</strong></p>
+      <div class="beg-grid">
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 BSI 200-2</h4><p>Definiert die Vorgehensweise: Strukturanalyse → Schutzbedarf → Modellierung → IT-GS-Check → (Risiko) → Umsetzung.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 3 Absicherungsstufen</h4><p><strong>Basis</strong> (Einstieg) · <strong>Kern</strong> (Kronjuwelen) · <strong>Standard</strong> (vollständig, zertifizierbar).</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 6 Schichten</h4><p>Informationen · Prozesse · Anwendungen · IT-Systeme · Netze · Räume/Gebäude. Reihenfolge ist wichtig!</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Schutzbedarfskategorien</h4><p>Exakt 3: <strong>normal</strong> · <strong>hoch</strong> · <strong>sehr hoch</strong>. Nicht 4 oder 5!</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Maximumprinzip</h4><p>Die <strong>höchste</strong> Einstufung gewinnt – fast immer der Regelfall bei Vererbung.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Kumulationseffekt</h4><p>Wird oft verwechselt mit Maximumprinzip. Merken: Kumulation = <strong>Bündelung</strong> mehrerer Werte.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Verteilungseffekt</h4><p>Nur bei echter Redundanz mit automatischem Failover! Nicht automatisch anwendbar.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 IT-Grundschutz-Check</h4><p>Ergebnisse: <strong>Ja · Teilweise · Nein · Entbehrlich</strong> – genau 4 Werte.</p></div>
+        <div class="beg" style="border-color:var(--accent-purple)"><h4>📌 Risikoanalyse-Trigger</h4><p>Nötig bei: hohem/sehr hohem Schutzbedarf, fehlendem Baustein, untypischem Einsatz.</p></div>
+      </div>
+      <div class="merksatz" style="background:var(--accent-purple-light);color:var(--accent-purple);border-left-color:var(--accent-purple);margin-top:14px"><span class="merksatz-icon">💪</span><div><strong>Merkhilfe:</strong> „<em>Struktur</em> (Was haben wir?) → <em>Schutzbedarf</em> (Wie wichtig?) → <em>Modellierung</em> (Welche Bausteine?) → <em>Check</em> (Wo stehen wir?) → <em>Risiko</em> (Was fehlt noch?) → <em>Umsetzung</em> (Anpacken)."</div></div>
+    </div>
+
+    <div class="card" style="border:1px solid var(--accent-amber);background:var(--accent-amber-light)">
+      <h3 style="color:var(--accent-amber)">📝 Hilfe für die Projektarbeit</h3>
+      <p style="color:var(--accent-amber);font-weight:500">Modul 5 ist das Herzstück deiner IHK-Projektarbeit! Die Kapitel 2–6 deiner Projektarbeit folgen exakt der ISMS-Methodik.</p>
+      <ul style="margin-top:8px;color:var(--accent-amber)">
+        <li><strong>Kapitel 2 der Projektarbeit</strong> = Strukturanalyse (Tabellen + Grafik mit Abhängigkeiten)</li>
+        <li><strong>Kapitel 3</strong> = Schutzbedarfsfeststellung (mindestens einen Baum für ein Schutzziel)</li>
+        <li><strong>Kapitel 4</strong> = Modellierung (Bausteine aus dem IT-Grundschutz-Kompendium zuordnen)</li>
+        <li><strong>Kapitel 5</strong> = IT-Grundschutz-Check (Soll-Ist-Vergleich, Ja/Teilweise/Nein/Entbehrlich)</li>
+        <li><strong>Kapitel 6</strong> = Risikoanalyse für Komponenten mit erhöhtem Schutzbedarf</li>
+      </ul>
+    </div>
+
+  </div>
+  <div id="m5-karten" class="tab-content">
+    <div class="karten-nav"><button class="btn" onclick="vorKarte('k5')">← Zurück</button><span id="k5-info">Karte 1 von 8</span><button class="btn" onclick="naechsteKarte('k5')">Weiter →</button></div>
+    <div class="karte" id="k5-karte" onclick="flipKarte('k5')"><div class="karte-pruef-badge">Prüfungsrelevant</div><div class="karte-frage" id="k5-frage"></div><div class="karte-antwort" id="k5-antwort"></div><div class="karte-hint">↻ Klicken zum Umdrehen</div></div>
+    <div class="fort-bar"><div class="fort-fill" id="k5-fort" style="width:12.5%"></div></div>
+  </div>
+  <div id="m5-quiz" class="tab-content">
+    <div class="quiz-card" id="q5-card">
+      <div class="quiz-top"><span class="quiz-counter" id="q5-counter">Frage 1 von 16</span><span class="quiz-pruef" id="q5-pruef">Prüfungsrelevant</span></div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="q5-progfill" style="width:6%"></div></div>
+      <div class="quiz-frage" id="q5-frage"></div>
+      <div class="quiz-opts" id="q5-opts"></div>
+      <div class="feedback" id="q5-feedback"></div>
+      <div class="quiz-bottom"><span style="font-size:12px;color:var(--text3);font-weight:500" id="q5-hint">Bitte Antwort auswählen</span><div class="quiz-bottom-right"><button class="btn btn-primary" id="q5-confirm" style="display:none" onclick="bestaetigen(5)">Bestätigen</button><button class="btn btn-primary" id="q5-next" style="display:none" onclick="naechsteFrage(5)">Nächste →</button></div></div>
+    </div>
+    <div class="ergebnis" id="q5-ergebnis" style="display:none">
+      <div class="ergebnis-top"><h3>🎉 Modul 5 abgeschlossen</h3><div class="score-num" id="q5-score"></div><p id="q5-scoretext"></p><div class="ergebnis-btns"><button class="btn" onclick="quizNeu(5)">Nochmal</button><button class="btn btn-primary" onclick="nav('modul10',document.querySelectorAll('.mod-item')[10])">Zur Prüfung →</button></div></div>
+      <div class="auswertung-title">📊 Auswertung aller Fragen</div>
+      <div id="q5-auswertung"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODUL 10 - PRÜFUNG -->
+<div id="modul10" class="page">
+  <div class="page-header">
+    <div>
+      <span class="page-eyebrow" style="background:var(--accent-purple-light);color:var(--accent-purple)">Modul 10 · Prüfung</span>
+      <div class="page-title">IHK-Abschlusstest</div>
+      <div class="page-meta"><span>Prüfungsaufbau</span><span>Projektarbeit</span><span>Verteidigung</span></div>
+    </div>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="tab('m10','aufbau',this)">🎓 Prüfungsaufbau</button>
+    <button class="tab" onclick="tab('m10','projekt',this)">📄 Projektarbeit</button>
+    <button class="tab" onclick="tab('m10','tipps',this)">💡 Tipps</button>
+  </div>
+  <div id="m10-aufbau" class="tab-content active">
+    <div class="card">
+      <h3>🎯 IHK-Abschluss · Zusammensetzung (100%)</h3>
+      <div class="pruef-overview">
+        <div class="po-box mc"><div class="po-pct">45%</div><div class="po-title">Multiple Choice</div><div class="po-detail">5 Fragen je Modul<br>1 Antwort korrekt<br>9 Module = 45 Fragen</div></div>
+        <div class="po-box proj"><div class="po-pct">30%</div><div class="po-title">Projektarbeit</div><div class="po-detail">ISMS-Konzept erstellen<br>Max. 10 Seiten<br>Schriftgröße 12</div></div>
+        <div class="po-box vert"><div class="po-pct">25%</div><div class="po-title">Verteidigung</div><div class="po-detail">20 Min. gesamt:<br>10 Min. Präsentation<br>5 Min. Gespräch<br>5 Min. Auswertung</div></div>
+      </div>
+    </div>
+    <div class="bestehen-box">
+      <div class="pct">≥50%</div>
+      <p><strong>Bestehensgrenze</strong>Insgesamt mindestens 50% der Gesamtpunktzahl erforderlich, um die Prüfung zu bestehen.</p>
+    </div>
+    <div class="card">
+      <h3>📝 Multiple-Choice-Test im Detail</h3>
+      <ul>
+        <li>Pro Modul werden 5 Fragen gestellt</li>
+        <li>Jeweils genau 1 Antwort ist korrekt (Single Choice)</li>
+        <li>Insgesamt 9 Module × 5 Fragen = 45 Fragen</li>
+        <li>Anteil an der Gesamtnote: 45%</li>
+        <li>💡 Tipp: Nutze die Modul-Quizze zur optimalen Vorbereitung!</li>
+      </ul>
+    </div>
+  </div>
+  <div id="m10-projekt" class="tab-content">
+    <div class="card">
+      <h3>📋 Gliederung der Projektarbeit</h3>
+      <div class="gl-item"><div class="gl-num">1</div><div class="gl-text"><strong>Einführung</strong><ul class="gl-sub"><li>Einleitung mit Darstellung des Unternehmens</li><li>Dokumentenlenkung</li><li>Geltungsbereich & Ziel</li><li>Organisation, Rollen und Aufgaben</li><li>KVP, Inkrafttreten und Bekanntmachung</li></ul></div></div>
+      <div class="gl-item"><div class="gl-num">2</div><div class="gl-text"><strong>Strukturanalyse</strong></div></div>
+      <div class="gl-item"><div class="gl-num">3</div><div class="gl-text"><strong>Schutzbedarfsfeststellung</strong></div></div>
+      <div class="gl-item"><div class="gl-num">4</div><div class="gl-text"><strong>Modellierung</strong></div></div>
+      <div class="gl-item"><div class="gl-num">5</div><div class="gl-text"><strong>IT-Grundschutzcheck</strong></div></div>
+      <div class="gl-item"><div class="gl-num">6</div><div class="gl-text"><strong>Risikoanalyse und Behandlung</strong></div></div>
+      <div class="gl-item"><div class="gl-num">7</div><div class="gl-text"><strong>Fazit und Empfehlungen</strong></div></div>
+    </div>
+    <div class="card">
+      <h3>📎 Formale Anforderungen</h3>
+      <div class="beg-grid">
+        <div class="beg"><h4>📏 Umfang</h4><p>Maximal 10 Seiten</p></div>
+        <div class="beg"><h4>🔤 Schriftgröße</h4><p>Schriftgröße 12</p></div>
+        <div class="beg"><h4>📁 Dateiname</h4><p><code>Vorname_Nachname.pdf</code></p></div>
+        <div class="beg"><h4>📄 Format</h4><p>PDF-Datei</p></div>
+        <div class="beg"><h4>🎨 Gestaltung</h4><p>Visuell frei wählbar</p></div>
+        <div class="beg"><h4>⏰ Deadline</h4><p>Zwingend einhalten!</p></div>
+      </div>
+    </div>
+  </div>
+  <div id="m10-tipps" class="tab-content">
+    <div class="card">
+      <h3>✅ Bewertungskriterien</h3>
+      <div class="kriterien">
+        <div class="krit-item"><div class="krit-icon">✓</div><p><strong>Anwendung der Methodik</strong>Korrekte Nutzung der erlernten ISMS-Methodik</p></div>
+        <div class="krit-item warn"><div class="krit-icon">!</div><p><strong>Unternehmensbezug</strong>Besonders wichtig! Bezug auf eigenes Unternehmen</p></div>
+        <div class="krit-item"><div class="krit-icon">✓</div><p><strong>Nachvollziehbarkeit</strong>Inhalt muss logisch und verständlich sein</p></div>
+        <div class="krit-item"><div class="krit-icon">✓</div><p><strong>Visuelle Gestaltung</strong>Frei wählbar, aber professionell</p></div>
+        <div class="krit-item warn"><div class="krit-icon">!</div><p><strong>Deadline</strong>Abgabefrist ist Ausschlusskriterium</p></div>
+        <div class="krit-item"><div class="krit-icon">✓</div><p><strong>Umfang</strong>Max. 10 Seiten, Schriftgröße 12</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>🎤 Verteidigungsablauf (20 Min.)</h3>
+      <div class="phases" style="grid-template-columns:repeat(3,1fr)">
+        <div class="phase"><div class="phase-num">10</div><p style="font-weight:600">Präsentation</p></div>
+        <div class="phase"><div class="phase-num">5</div><p style="font-weight:600">Fachgespräch</p></div>
+        <div class="phase"><div class="phase-num">5</div><p style="font-weight:600">Auswertung</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>🚀 Lerntipps</h3>
+      <ul>
+        <li>Nutze die Quiz-Funktion jedes Moduls zur Wiederholung</li>
+        <li>Achte besonders auf 🔴 rot markierte Inhalte – diese sind prüfungsrelevant</li>
+        <li>Übe Lernkarten regelmäßig – auch die ohne Markierung</li>
+        <li>Starte früh mit der Projektarbeit – wähle ein vertrautes Unternehmen</li>
+        <li>Unternehmensbezug ist besonders wichtig – keine generischen Beispiele!</li>
+        <li>Präsentiere strukturiert: Problem → Analyse → Lösung</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+// Theme
+function toggleTheme(){
+  const cur=document.documentElement.getAttribute('data-theme');
+  const next=cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  try{localStorage.setItem('theme',next);}catch(e){}
+  updateThemeIcon(next);
+}
+function updateThemeIcon(t){
+  document.getElementById('iconSun').style.display=t==='dark'?'block':'none';
+  document.getElementById('iconMoon').style.display=t==='dark'?'none':'block';
+}
+(function(){
+  let saved='light';
+  try{saved=localStorage.getItem('theme')||'light';}catch(e){}
+  document.documentElement.setAttribute('data-theme',saved);
+  updateThemeIcon(saved);
+})();
+
+// Mobile: Sidebar & Backdrop ans Ende von body verschieben für sauberen Stacking-Context
+(function moveDrawerToBody(){
+  const sb=document.getElementById('sidebar');
+  const bd=document.getElementById('backdrop');
+  if(sb && sb.parentNode!==document.body){document.body.appendChild(sb);}
+  if(bd && bd.parentNode!==document.body){document.body.appendChild(bd);}
+})();
+
+// Sidebar mobile
+function toggleSidebar(e){
+  if(e){e.preventDefault();e.stopPropagation();}
+  const sb=document.getElementById('sidebar');
+  const bd=document.getElementById('backdrop');
+  const isOpen=sb.classList.toggle('open');
+  bd.classList.toggle('open',isOpen);
+  document.body.classList.toggle('sidebar-open',isOpen);
+}
+
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('backdrop').classList.remove('open');
+  document.body.classList.remove('sidebar-open');
+}
+
+// Navigation
+function nav(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.mod-item').forEach(m=>m.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(window.innerWidth<=860){closeSidebar();}
+}
+function tab(modul,tabId,btn){
+  const tabs=['inhalt','karten','quiz','aufbau','projekt','tipps'];
+  tabs.forEach(t=>{const el=document.getElementById(modul+'-'+t);if(el)el.classList.remove('active');});
+  document.querySelectorAll('#modul'+modul.replace('m','')+' .tab').forEach(t=>t.classList.remove('active'));
+  const target=document.getElementById(modul+'-'+tabId);
+  if(target)target.classList.add('active');
+  btn.classList.add('active');
+}
+
+// Lernkarten
+const kartenData={
+  k1:[
+    {f:"Was ist der Unterschied zwischen IT-Sicherheit und Informationssicherheit?",a:"IT-Sicherheit schützt die IT-Systeme selbst (Hardware, Software, Netzwerke).\n\nInformationssicherheit schützt die Information unabhängig von Medium oder Zustand – sie ist der übergeordnete Begriff.",p:true},
+    {f:"Nenne die 4 Schutzziele der Informationssicherheit.",a:"1. Vertraulichkeit – nur Befugte dürfen zugreifen\n2. Integrität – Daten sind korrekt und unverändert\n3. Verfügbarkeit – Systeme bei Bedarf nutzbar\n4. Authentizität – Identität ist nachweisbar",p:true},
+    {f:"Was ist eine Schwachstelle?",a:"Ein Bereich mit einem Defizit, der die Eigenschaften des Gesamtsystems beeinträchtigen kann.\n\nEine Schwachstelle verursacht noch keinen Schaden – sie wird erst relevant in Kombination mit einer Bedrohung.",p:true},
+    {f:"Was ist der Unterschied zwischen Bedrohung und Gefährdung?",a:"Bedrohung: Ereignis/Aktion, die negativ wirken kann – immer existent, im Normalzustand kein Schaden.\n\nGefährdung: Bedrohung + Schwachstelle → konkretes Schadensszenario entsteht.",p:true},
+    {f:"Was versteht man unter Datenschutz?",a:"Schutz personenbezogener Daten vor Missbrauch.\n\nNicht zu verwechseln mit:\n• Datensicherheit (Schutz aller Daten)\n• Datensicherung (technische Maßnahme/Backup)",p:false},
+    {f:"Was bedeutet 'Endpoint Protection'?",a:"Endpoint Protection ist der moderne Begriff für Computersicherheit – den Schutz einzelner Geräte/Endpunkte wie PCs, Laptops, Smartphones.",p:false},
+    {f:"Was ist Cyber-Sicherheit?",a:"Schutz gegen Gefahren, die aus dem Internet stammen. Teilbereich der Informationssicherheit.",p:false},
+    {f:"Welche 6 Parameter werden in einer Risikoanalyse ermittelt?",a:"1. Schwachstellen\n2. Bedrohung\n3. Schutzziel\n4. Eintrittswahrscheinlichkeit\n5. Schadenshöhe\n6. Schutzmaßnahmen",p:true}
+  ],
+  k2:[
+    {f:"Was regelt das IT-Sicherheitsgesetz §8a?",a:"§8a verpflichtet KRITIS-Betreiber, angemessene organisatorische und technische Vorkehrungen zur Vermeidung von Störungen der Verfügbarkeit, Integrität, Authentizität und Vertraulichkeit zu treffen.",p:true},
+    {f:"Welche 4 Pflichten haben KRITIS-Betreiber?",a:"1. Kontaktstelle benennen\n2. IT-Störungen melden\n3. IT-Sicherheit auf 'Stand der Technik' halten\n4. Nachweis alle 2 Jahre erbringen",p:true},
+    {f:"Was ist der Unterschied zwischen ISO 27001 und BSI 200-x?",a:"ISO 27001: Flexibel, 114 allgemeine Maßnahmen, hoher Aufwand bei Risikoanalysen.\n\nBSI 200-x: Formal, 4000+ Anforderungen in 104 Bausteinen, Risikoanalysen implizit enthalten.",p:true},
+    {f:"Was ist die NIS2-Richtlinie?",a:"EU-Richtlinie (12/2022) zur Netz- und Informationssicherheit mit strengeren Meldepflichten und verschärften Sicherheitsanforderungen für wichtige und wesentliche Einrichtungen.",p:true},
+    {f:"Wofür steht TISAX?",a:"Trusted Information Security Assessment Exchange – Sicherheitsstandard für die KFZ-Branche (Automobilindustrie).",p:false},
+    {f:"Was ist ein B3S?",a:"Branchenspezifischer Sicherheitsstandard – definiert konkrete Anforderungen zum 'Stand der Technik' für bestimmte KRITIS-Sektoren.",p:false},
+    {f:"Was ist CISIS12?",a:"Ein ISMS-Framework, das den Aufbau eines Informationssicherheits-Managementsystems in 12 Schritten ermöglicht – konzipiert für KMU und Kommunen.",p:false},
+    {f:"Was regelt die DSGVO?",a:"Die Datenschutzgrundverordnung regelt den Umgang mit personenbezogenen Daten in der EU. Sie gilt seit 25. Mai 2018 für alle Unternehmen, die Daten von EU-Bürgern verarbeiten.",p:false}
+  ],
+  k3:[
+    {f:"Nenne die 3 Arten von Prozessen im Prozesshaus.",a:"1. Managementprozesse – Steuerung des Unternehmens\n2. Kernprozesse – Wertschöpfungskette, Kernkompetenz\n3. Unterstützungsprozesse – Dienen dem Kernprozess (IT, HR, etc.)",p:true},
+    {f:"Was sind die 5 Phasen des Prozessmanagements?",a:"Phase 1: Prozessarbeit vorbereiten\nPhase 2: Prozesse strukturieren\nPhase 3: Prozesse beschreiben\nPhase 4: Prozesse lenken und ständig verbessern\nPhase 5: Prozesse stabilisieren",p:true},
+    {f:"Was ist der Unterschied zwischen Prozess-Owner und Prozess-Manager?",a:"Prozess-Owner: Ist rechenschaftspflichtig für den Geschäftsprozess (strategisch).\n\nProzess-Manager: Ist operativ verantwortlich für die Umsetzung des Prozesses.",p:false},
+    {f:"Was ist eine EPK?",a:"Ereignisgesteuerte Prozesskette – grafische Modellierungssprache zur Darstellung von Geschäftsprozessen.\n\nEreignisse = Sechsecke (rot)\nFunktionen = Rechtecke mit abgerundeten Ecken (grün)",p:false},
+    {f:"Was bedeutet Reifegrad Level 5 (Optimiert)?",a:"Rahmenbedingungen werden kontinuierlich überwacht, Prozessportfolio wird neu bewertet, Routineprozesse laufen automatisiert, Prozesskultur ist in den Köpfen der Mitarbeiter verankert.",p:false},
+    {f:"Was versteht man unter Prozess-Re-Engineering?",a:"Gesamten Prozess infrage stellen und neu gestalten – auf Kundenzufriedenheit ausrichten. Kein schrittweise Verbesserung, sondern ein vollständig neuer Prozess. Nachteil: Keine Lerneffekte.",p:false},
+    {f:"Warum werden IST-Prozesse abgebildet?",a:"• Zur objektiven Analyse des Status quo\n• Als Basis für die Schwachstellendefinition\n• Als Basis für das zukünftige SOLL-Konzept",p:false}
+  ],
+  k4:[
+    {f:"Was sind die 3 Hauptfunktionen einer IS-Leitlinie?",a:"1. Orientierung & Richtlinien – gemeinsames Verständnis für Sicherheitsziele\n2. Verpflichtung & Verantwortung – Bedeutung der Informationssicherheit im Unternehmen\n3. Kommunikation – zum Austausch mit Mitarbeitern, Kunden, Lieferanten",p:true},
+    {f:"Welche Pflichtinhalte muss eine IS-Leitlinie enthalten?",a:"• Geltungsbereich des Unternehmens\n• Bedeutung der Informationssicherheit\n• Übernahme der Verantwortung durch Geschäftsführung\n• Gesetze und Regulierungsauflagen\n• Festlegung der Sicherheitsziele und -strategie\n• Organisationsstruktur & Rollen\n• Wichtige Geschäftsprozesse",p:true},
+    {f:"Welche Schutzziele müssen mindestens in einer IS-Leitlinie betrachtet werden?",a:"Mindestens:\n• Vertraulichkeit\n• Integrität\n• Verfügbarkeit\n\n(Authentizität und weitere Ziele können je nach Unternehmen ergänzt werden.)",p:true},
+    {f:"Wie ist die Dokumentenhierarchie im ISMS aufgebaut (von strategisch zu operativ)?",a:"1. IS-Leitlinie (5-10 Jahre)\n2. ISMS-Handbücher (3-5 Jahre)\n3. Sicherheitskonzepte (1-2 Jahre)\n4. Umsetzungskonzepte & Technische Richtlinien (jährlich)\n5. Arbeitsanweisungen & Knowledgebases (laufend)",p:true},
+    {f:"Wer verabschiedet die IS-Leitlinie?",a:"Die Geschäftsführung (GF) – die IS-Leitlinie ist ein strategisches Grundsatzdokument, für das die oberste Führungsebene die Verantwortung übernehmen muss.",p:false},
+    {f:"Was bedeutet 'op.OEs' in der Dokumentenhierarchie?",a:"op.OEs = operative Organisationseinheiten.\n\nSie sind – gemeinsam mit dem ISB (Informationssicherheitsbeauftragten) – für die Erstellung von Sicherheitskonzepten und operativen Dokumenten verantwortlich.",p:false},
+    {f:"Wie unterscheiden sich Informationssicherheit, Datenschutz und Notfallmanagement?",a:"Informationssicherheit: Geschäftssicht (Informationen + Prozesse, V·I·V)\nDatenschutz: Personensicht (personenbezogene Daten, Vertraulichkeit)\nNotfallmanagement: Geschäftserhalt (Verfügbarkeit)",p:false},
+    {f:"Wie oft wird eine IS-Leitlinie typischerweise aktualisiert?",a:"Alle 5–10 Jahre – sie ist ein strategisches, langfristiges Dokument. Kurzfristige Änderungen erfolgen auf den nachgelagerten Ebenen (Sicherheitskonzepte, Arbeitsanweisungen).",p:false}
+  ],
+  k5:[
+    {f:"Welche Phasen umfasst die ISMS-Methodik nach BSI 200-2?",a:"1. Strukturanalyse (Ist-Zustand)\n2. Schutzbedarfsfeststellung\n3. Modellierung (Bausteine zuordnen)\n4. IT-Grundschutz-Check (Soll-Ist-Vergleich)\n5. Risikoanalyse (wo nötig)\n6. Konsolidierung\n7. Umsetzung der Maßnahmen\n\nErgebnis: das Sicherheitskonzept.",p:true},
+    {f:"Welche 3 Absicherungsstufen gibt es in BSI 200-2?",a:"1. Basis-Absicherung – schneller Einstieg\n2. Kern-Absicherung – Fokus auf Kronjuwelen (wichtigste Werte)\n3. Standard-Absicherung – vollständig, zertifizierbar",p:true},
+    {f:"Welche 6 Schichten hat die Strukturanalyse?",a:"(von oben nach unten)\n1. Informationen\n2. Prozesse\n3. Anwendungen\n4. IT-Systeme\n5. Netze\n6. Räume / Gebäude",p:true},
+    {f:"Welche 3 Grundsätze der Strukturanalyse gibt es?",a:"1. Jedes Objekt ist genau einmal vorhanden\n2. Jedes Objekt muss eine Abhängigkeit von einer höheren Ebene erhalten\n3. Abhängigkeiten sind transitiv (vererben sich nach unten)",p:true},
+    {f:"Welche Schutzbedarfskategorien gibt es?",a:"Genau drei:\n• Normal – überschaubare Schäden\n• Hoch – beträchtliche Schäden\n• Sehr hoch – existenzbedrohend\n\n(NICHT 4 oder 5 Stufen!)",p:true},
+    {f:"Was sind die 3 Vererbungs-Effekte?",a:"1. Maximumprinzip – höchster Schutzbedarf gewinnt (Regelfall)\n2. Kumulationseffekt – Bündelung mehrerer Werte erhöht Schutzbedarf\n3. Verteilungseffekt – Redundanz kann Schutzbedarf senken",p:true},
+    {f:"Wann muss eine Risikoanalyse durchgeführt werden?",a:"• Bei Komponenten mit hohem oder sehr hohem Schutzbedarf\n• Wenn kein passender Baustein existiert\n• Wenn das Objekt in einer untypischen Umgebung betrieben wird",p:false},
+    {f:"Welche 4 Ergebnisse gibt es beim IT-Grundschutz-Check?",a:"1. Ja – vollständig umgesetzt\n2. Teilweise – Maßnahme teilweise umgesetzt\n3. Nein – noch nicht umgesetzt\n4. Entbehrlich – nicht relevant im Kontext",p:false}
+  ]
+};
+
+// Quiz Data
+const LABELS=['A','B','C','D'];
+const quizDataRaw={
+  1:[
+    {f:"Was ist der übergeordnete Begriff: IT-Sicherheit oder Informationssicherheit?",opts:["IT-Sicherheit","Informationssicherheit","Cyber-Sicherheit","Datensicherheit"],r:1,e:"Informationssicherheit ist der übergeordnete Begriff – IT-Sicherheit schützt nur die IT-Systeme selbst und ist ein Teilbereich.",p:true},
+    {f:"Welches ist KEIN Schutzziel der Informationssicherheit?",opts:["Vertraulichkeit","Integrität","Wirtschaftlichkeit","Verfügbarkeit"],r:2,e:"Die vier anerkannten Schutzziele sind: Vertraulichkeit, Integrität, Verfügbarkeit und Authentizität. Wirtschaftlichkeit gehört nicht dazu.",p:true},
+    {f:"Eine Gefährdung entsteht, wenn...",opts:["eine Schwachstelle allein existiert","eine Bedrohung allein bekannt wird","eine Bedrohung auf eine Schwachstelle trifft","ein System planmäßig ausfällt"],r:2,e:"Gefährdung = Bedrohung + Schwachstelle. Beide Faktoren müssen zusammentreffen.",p:true},
+    {f:"Was ist Datensicherung?",opts:["Gleichbedeutend mit Datenschutz","Schutz personenbezogener Daten nach DSGVO","Eine konkrete Maßnahme zur Gewährleistung der Datensicherheit","Der Schutz von IT-Systemen vor Angriffen"],r:2,e:"Datensicherung (z.B. Backup) ist eine Maßnahme zur Datensicherheit.",p:false},
+    {f:"Welche Aussage zur Schwachstelle ist korrekt?",opts:["Sie verursacht immer sofort einen Schaden","Sie ist ausschließlich digital","Sie ist ohne eine Bedrohung irrelevant","Sie ist gleichbedeutend mit einer Gefährdung"],r:2,e:"Eine Schwachstelle allein verursacht noch keinen Schaden. Sie wird erst gefährlich, wenn eine Bedrohung sie ausnutzt.",p:true},
+    {f:"Was bezeichnet 'Endpoint Protection' heute?",opts:["Netzwerksicherheit am Gateway","Gebäudesicherung","Schutz einzelner Geräte (ehemals Computersicherheit)","Datensicherungssoftware"],r:2,e:"Computersicherheit – der Schutz einzelner Endgeräte – wird heute als Endpoint Protection bezeichnet.",p:false},
+    {f:"Welches Schutzziel stellt sicher, dass Daten korrekt und unverändert sind?",opts:["Vertraulichkeit","Verfügbarkeit","Integrität","Authentizität"],r:2,e:"Integrität bedeutet, dass Daten korrekt, vollständig und unverändert vorliegen.",p:true},
+    {f:"Was schützt Informationssicherheit im Gegensatz zu IT-Sicherheit?",opts:["Nur digitale Daten auf Servern","Nur Netzwerke und Systeme","Informationen unabhängig von Zustand und Medium","Nur Daten während der Übertragung"],r:2,e:"Informationssicherheit schützt Informationen unabhängig davon, ob sie digital, physisch oder mündlich vorliegen.",p:true},
+    {f:"Was ist Cyber-Sicherheit?",opts:["Schutz aller Unternehmensdaten","Schutz gegen Gefahren aus dem Internet","Schutz physischer Gebäude","Schutz personenbezogener Daten"],r:1,e:"Cyber-Sicherheit bezeichnet speziell den Schutz vor Gefahren aus dem Internet.",p:false},
+    {f:"Was versteht man unter Datenschutz?",opts:["Sicherung aller Unternehmensdaten per Backup","Schutz personenbezogener Daten vor Missbrauch","Schutz von IT-Systemen vor Ausfällen","Verschlüsselung von Datenübertragungen"],r:1,e:"Datenschutz (geregelt durch DSGVO) schützt personenbezogene Daten vor unbefugter Nutzung.",p:false},
+    {f:"Welches Schutzziel stellt sicher, dass Systeme bei Bedarf nutzbar sind?",opts:["Vertraulichkeit","Authentizität","Integrität","Verfügbarkeit"],r:3,e:"Verfügbarkeit bedeutet, dass autorisierte Nutzer jederzeit auf Daten und Systeme zugreifen können.",p:true},
+    {f:"Was ist Gebäudesicherheit?",opts:["Schutz der IT-Systeme im Gebäude","Schutz der Räumlichkeiten eines Unternehmens","Schutz personenbezogener Daten","Brandschutzmaßnahmen für Server"],r:1,e:"Gebäudesicherheit bezeichnet den Schutz der Räumlichkeiten eines Unternehmens.",p:false},
+    {f:"Was bedeutet Authentizität als Schutzziel?",opts:["Daten sind immer verfügbar","Daten sind unverändert","Die Identität von Kommunikationspartnern ist nachweisbar","Daten sind nur für Befugte zugänglich"],r:2,e:"Authentizität stellt sicher, dass die Identität von Absendern oder Systemen eindeutig nachweisbar ist.",p:true},
+    {f:"Welche 6 Parameter werden in einer Risikoanalyse zu einem Gefährdungsszenario ermittelt?",opts:["Schwachstellen, Bedrohung, Schutzziel, Eintrittswahrscheinlichkeit, Schadenshöhe, Schutzmaßnahmen","Vertraulichkeit, Integrität, Verfügbarkeit, Authentizität, Risiko, Maßnahmen","IT-Systeme, Daten, Netzwerke, Nutzer, Prozesse, Gesetze","Bedrohung, Angriff, Schaden, Gegenmaßnahme, Bewertung, Protokoll"],r:0,e:"Die 6 Risikoparameter: Schwachstellen, Bedrohung, Schutzziel, Eintrittswahrscheinlichkeit, Schadenshöhe und Schutzmaßnahmen.",p:true},
+    {f:"Was ist Arbeitsschutz im Kontext der Sicherheitsbegriffe?",opts:["Schutz der Arbeitsdaten vor Verlust","Schutz der IT-Systeme am Arbeitsplatz","Schutz der Arbeitsfähigkeit eines Unternehmens","Schutz der Mitarbeiterdaten"],r:2,e:"Arbeitsschutz & Arbeitssicherheit bezeichnet den Schutz der Arbeitsfähigkeit eines Unternehmens.",p:false},
+    {f:"Welche Aussage zur Bedrohung ist korrekt?",opts:["Eine Bedrohung existiert nur bei konkreten Angriffen","Bedrohungen sind immer existent, im Normalzustand entsteht kein Schaden","Eine Bedrohung ist gleichbedeutend mit einer Gefährdung","Bedrohungen sind nur digital"],r:1,e:"Bedrohungen sind immer existent. Der Normalzustand entsteht in einer akzeptablen Bedrohungslage.",p:true},
+    {f:"Welcher Begriff beschreibt den Schutz aller Daten, wobei Systeme vernachlässigbar sind?",opts:["IT-Sicherheit","Datenschutz","Datensicherheit","Datensicherung"],r:2,e:"Datensicherheit bezeichnet die Sicherheit aller Daten – die zugrundeliegenden Systeme sind dabei vernachlässigbar.",p:false}
+  ],
+  2:[
+    {f:"Welche Pflicht haben KRITIS-Betreiber bezüglich der Nachweiserbringung?",opts:["Jährlich","Alle 2 Jahre","Alle 3 Jahre","Einmalig bei Erstzertifizierung"],r:1,e:"KRITIS-Betreiber sind verpflichtet, alle 2 Jahre Nachweise über ihre IT-Sicherheitsmaßnahmen zu erbringen.",p:true},
+    {f:"Was ist der Hauptunterschied zwischen ISO 27001 und BSI 200-x?",opts:["ISO 27001 ist kostengünstiger","BSI 200-x ist flexibler einsetzbar","ISO 27001 ist flexibel, BSI 200-x ist formal mit über 4000 Anforderungen","BSI 200-x gilt ausschließlich in Deutschland"],r:2,e:"ISO 27001 ist flexibel (114 allgemeine Maßnahmen), BSI 200-x ist sehr formal mit über 4000 Anforderungen.",p:true},
+    {f:"Was regelt die NIS2-Richtlinie im Vergleich zur NIS-Richtlinie?",opts:["Weniger strenge Anforderungen für KMU","Strengere Meldepflichten und verschärfte Sicherheitsanforderungen","Nur nationale IT-Sicherheitsregelungen","Ausschließlich Regelungen für KRITIS-Betreiber"],r:1,e:"NIS2 bringt strengere Meldepflichten und verschärfte Sicherheitsanforderungen.",p:true},
+    {f:"Wofür steht TISAX?",opts:["Trusted Information Security Assessment Exchange – Standard für die KFZ-Branche","Total Information Security and Access Exchange – BSI-Standard für KMU","Technical Information Security Architecture Exchange – EU-Richtlinie","Trusted IT Security Audit Exchange – Zertifizierung für Behörden"],r:0,e:"TISAX steht für Trusted Information Security Assessment Exchange und ist der ISMS-Standard für die Automobilindustrie.",p:false},
+    {f:"Was ist CISIS12?",opts:["Ein KRITIS-Gesetz für kritische Infrastrukturen","Ein ISMS-Aufbau in 12 Schritten für KMU und Kommunen","Ein BSI-Standard für Bundesbehörden","Ein EU-Datenschutzrahmen"],r:1,e:"CISIS12 ermöglicht den Aufbau eines ISMS in 12 Schritten für KMU und Kommunen.",p:false},
+    {f:"Ab wann gilt für KRITIS-Betreiber die Pflicht zum Einsatz von Angriffserkennungssystemen?",opts:["Ab IT-Sicherheitsgesetz 1.0 (07/2015)","Ab 01. Mai 2023 (IT-Sicherheitsgesetz 2.0)","Ab NIS2-Inkrafttreten (12/2022)","Seit Bestehen des BSI-Errichtungsgesetzes"],r:1,e:"Das IT-Sicherheitsgesetz 2.0 führte ab 01.05.2023 die Pflicht zu Angriffserkennungssystemen ein.",p:true},
+    {f:"Welcher BSI-Standard behandelt Business Continuity Management?",opts:["BSI 200-1","BSI 200-2","BSI 200-3","BSI 200-4"],r:3,e:"BSI-Standard 200-4 behandelt Business Continuity Management (BCM).",p:true},
+    {f:"Was definiert die KritisV?",opts:["Die Pflichten der KRITIS-Betreiber","Wer als KRITIS gilt (Schwellenwerte)","Die Höhe der Bußgelder bei Verstößen","Die technischen Mindestanforderungen"],r:1,e:"Die KritisV definiert anhand von Schwellenwerten, welche Einrichtungen als Kritische Infrastruktur gelten.",p:true},
+    {f:"Was regelt die DSGVO?",opts:["Schutz aller Unternehmensdaten","IT-Sicherheit für Bundesbehörden","Umgang mit personenbezogenen Daten in der EU","Netzwerksicherheit für Kritische Infrastrukturen"],r:2,e:"Die Datenschutzgrundverordnung regelt den Umgang mit personenbezogenen Daten in der EU.",p:false},
+    {f:"Was beschreibt BSI-Standard 200-1?",opts:["IT-Grundschutz-Vorgehensweise","Einführung eines ISMS nach IT-Grundschutz","Risikoanalyse auf Basis des IT-Grundschutzes","Business Continuity Management"],r:1,e:"BSI 200-1 beschreibt, wie ein ISMS nach IT-Grundschutz eingeführt wird.",p:true},
+    {f:"Welcher KRITIS-Sektor wurde durch das IT-Sicherheitsgesetz 2.0 (05/2021) neu hinzugefügt?",opts:["Finanzen","Transport und Verkehr","Siedlungsabfallentsorgung","Digitale Infrastruktur"],r:2,e:"Das IT-Sicherheitsgesetz 2.0 ergänzte die KRITIS-Sektoren um die Siedlungsabfallentsorgung.",p:true},
+    {f:"Was ist VdS 10000?",opts:["Ein BSI-Standard für Bundesbehörden","Ein ISMS-Framework mit begrenzten Ressourcen für KMU","Ein EU-Zertifizierungsstandard","Ein branchenspezifischer Standard für Versicherungen"],r:1,e:"VdS 10000 ermöglicht den Aufbau eines ISMS mit begrenzten Ressourcen für KMU.",p:false},
+    {f:"Wofür steht COBIT?",opts:["Cyber Operations and Business IT","Control Objectives for Information and Related Technology (IT-Governance)","Certified Online Business IT Tool","Corporate Operational Business Intelligence Technology"],r:1,e:"COBIT steht für 'Control Objectives for Information and Related Technology' und ist ein IT-Governance-Framework.",p:false},
+    {f:"Welche 4 Pflichten haben KRITIS-Betreiber laut BSI-Gesetz?",opts:["Zertifizierung, Schulung, Audits, Meldungen","Kontaktstelle benennen, Störungen melden, Stand der Technik einhalten, Nachweis alle 2 Jahre","Firewall, Backup, Verschlüsselung, Monitoring","ISMS aufbauen, Risikoanalyse, Penetrationstest, Dokumentation"],r:1,e:"KRITIS-Betreiber müssen: Kontaktstelle benennen, IT-Störungen melden, Stand der Technik, Nachweis alle 2 Jahre.",p:true},
+    {f:"Was ist der Digital Operational Resilience Act (DORA)?",opts:["Ein BSI-Standard für kritische Infrastrukturen","EU-Rahmen zur digitalen Widerstandsfähigkeit von Finanzunternehmen","Ein nationales Gesetz für Datensicherheit","Ein Standard für die Automobilindustrie"],r:1,e:"DORA stärkt die digitale Widerstandsfähigkeit von Finanzunternehmen in der EU.",p:false},
+    {f:"Welcher Standard bietet über 4000 sortierte Anforderungen in 104 gruppierten Bausteinen?",opts:["ISO/IEC 27001","CISIS12","BSI IT-Grundschutz (200-x)","VdS 10000"],r:2,e:"Der BSI IT-Grundschutz bietet über 4000 sortierte Anforderungen in 104 gruppierten Bausteinen.",p:true},
+    {f:"Was war das Ziel der NIS-Richtlinie (07/2016)?",opts:["Einführung der DSGVO in der EU","Hohes Sicherheitsniveau der Netz- und Informationssicherheit in der EU","Definition der KRITIS-Sektoren","Einführung von Bußgeldern bei IT-Verstößen"],r:1,e:"Die NIS-Richtlinie zielte auf ein hohes Sicherheitsniveau der Netz- und Informationssicherheit in der EU.",p:true}
+  ],
+  3:[
+    {f:"Welcher Prozesstyp bildet die Wertschöpfungskette zur Erfüllung des Kundenwunsches?",opts:["Managementprozess","Kernprozess","Unterstützungsprozess","Querschnittsprozess"],r:1,e:"Kernprozesse bilden die Wertschöpfungskette zur Erfüllung des Kundenwunsches (Kernkompetenz).",p:true},
+    {f:"Was ist die korrekte Reihenfolge der 5 Phasen des Prozessmanagements?",opts:["Strukturieren → Vorbereiten → Beschreiben → Lenken → Stabilisieren","Vorbereiten → Strukturieren → Beschreiben → Lenken → Stabilisieren","Beschreiben → Vorbereiten → Strukturieren → Stabilisieren → Lenken","Vorbereiten → Beschreiben → Strukturieren → Lenken → Stabilisieren"],r:1,e:"Die 5 Phasen: 1. Vorbereiten, 2. Strukturieren, 3. Beschreiben, 4. Lenken/Verbessern, 5. Stabilisieren.",p:true},
+    {f:"Welche Rolle ist operativ verantwortlich für die Umsetzung eines Prozesses?",opts:["Prozess-Eigner (Owner)","Prozess-Berater","Prozess-Manager","Prozess-Modellierer"],r:2,e:"Der Prozess-Manager ist operativ verantwortlich. Der Prozess-Owner ist rechenschaftspflichtig.",p:false},
+    {f:"Was kennzeichnet Reifegrad Level 3 ('Definiert')?",opts:["Prozesse laufen zufällig und unkontrolliert","Erfolgreiche Prozesse werden erkannt und wiederholt","Einheitliches Prozessverständnis ist etabliert, Prozesse sind dokumentiert","Prozesse werden quantifiziert, gemessen und bewertet"],r:2,e:"Level 3 (Definiert): Einheitliches Prozessverständnis etabliert, Prozesse dokumentiert.",p:false},
+    {f:"Was ist der wesentliche Nachteil von Prozess-Re-Engineering?",opts:["Es ist sehr kostenintensiv","Es entstehen keine oder kaum Lerneffekte","Es dauert zu lange im Vergleich zur KVP","Es funktioniert nur in Großunternehmen"],r:1,e:"Da Prozesse beim Re-Engineering immer wieder komplett neu definiert werden, entstehen keine/kaum Lerneffekte.",p:false},
+    {f:"Was ist der Unterschied zwischen Aufbau- und Ablauforganisation?",opts:["Aufbauorganisation beschreibt Prozesse, Ablauforganisation Hierarchien","Aufbauorganisation beschreibt Hierarchien (Organigramm), Ablauforganisation beschreibt Prozessabläufe","Beide beschreiben dasselbe aus unterschiedlicher Perspektive","Aufbauorganisation ist für KMU, Ablauforganisation für Großunternehmen"],r:1,e:"Die Aufbauorganisation beschreibt die Hierarchie (Organigramm), die Ablauforganisation die Prozessabläufe.",p:false},
+    {f:"Was ist eine EPK?",opts:["Eine europäische Prozessnorm","Ereignisgesteuerte Prozesskette – grafische Modellierungssprache","Eine IT-Sicherheitsrichtlinie","Ein Prozessreifegradmodell"],r:1,e:"EPK steht für Ereignisgesteuerte Prozesskette – eine grafische Modellierungssprache für Geschäftsprozesse.",p:false},
+    {f:"Was sind Unterstützungsprozesse?",opts:["Prozesse zur Steuerung des Unternehmens","Prozesse der Wertschöpfungskette","Prozesse, die dem Kernprozess dienen, aber nicht direkt dem Kunden","Prozesse des mittleren Managements"],r:2,e:"Unterstützungsprozesse (z.B. IT, HR, Buchhaltung) dienen dem Kernprozess, haben aber keinen direkten Kundenkontakt.",p:true},
+    {f:"Was beschreibt Reifegrad Level 1 ('Initial')?",opts:["Prozesse sind vollständig dokumentiert","Nur wenige Aktivitäten sind strukturiert, Prozesse laufen unkontrolliert","Prozesse werden regelmäßig gemessen","Prozesse laufen vollautomatisch"],r:1,e:"Level 1 (Initial): Nur wenige Aktivitäten sind strukturiert, Prozesse laufen zufällig und unkontrolliert.",p:false},
+    {f:"Welche Rolle designt und modelliert Prozesse?",opts:["Prozess-Manager","Prozess-Eigner","Prozess-Experte","Prozess-Modellierer"],r:3,e:"Der Prozess-Modellierer ist für das Design und die Modellierung von Prozessen zuständig.",p:false},
+    {f:"Was ist der Zweck einer IST-Prozessaufnahme?",opts:["Direkte Umsetzung von Verbesserungen","Objektive Analyse des Status quo und Basis für Schwachstellendefinition","Festlegung der Soll-Prozesse","Kontrolle der Mitarbeiterleistung"],r:1,e:"IST-Prozesse werden zur objektiven Analyse des Status quo und als Basis für die Schwachstellendefinition aufgenommen.",p:false},
+    {f:"Was ist BPM (Business Process Management)?",opts:["Ein IT-Tool zur Prozessautomatisierung","Eine Managementdisziplin, die Strategien und Kundenbedürfnisse durch End-to-End-Prozesse verbindet","Ein BSI-Standard für Prozessmanagement","Eine Zertifizierung für Prozessmanager"],r:1,e:"BPM ist eine Managementdisziplin, die Strategien und Ziele mit Kundenerwartungen durch End-to-End-Prozesse verbindet.",p:false},
+    {f:"Was kennzeichnet Reifegrad Level 5 ('Optimiert')?",opts:["Prozesse sind erstmals dokumentiert","Prozesse werden erstmals gemessen","Routineprozesse laufen automatisiert, Prozesskultur ist verankert, kontinuierliche Verbesserung","Prozesse werden erstmals wiederholt"],r:2,e:"Level 5 (Optimiert): Routineprozesse automatisiert, Prozesskultur verankert, kontinuierliche Verbesserung.",p:false},
+    {f:"Was sind Managementprozesse im Prozesshaus?",opts:["Prozesse der operativen Leistungserbringung","Prozesse zur Steuerung des Unternehmens und der Teilbereiche","Prozesse zur Unterstützung des Kernprozesses","Prozesse des IT-Betriebs"],r:1,e:"Managementprozesse steuern das Unternehmen und seine Teilbereiche – sie geben die Richtung vor.",p:true},
+    {f:"Was ist eine Prozessnotation?",opts:["Eine gesetzliche Vorschrift für Prozesse","Definition von Darstellungsformen und Regeln zur Beschreibung von Prozessabfolgen","Ein Reifegradmodell für Prozesse","Ein Standard für Prozessdokumentationen"],r:1,e:"Eine Prozessnotation definiert Darstellungsformen und Regeln zur Beschreibung von Prozessabfolgen (z.B. BPMN, EPK).",p:false}
+  ],
+  4:[
+    {f:"Welche Schutzziele müssen mindestens in einer IS-Leitlinie betrachtet werden?",opts:["Nur Vertraulichkeit","Vertraulichkeit und Integrität","Vertraulichkeit, Integrität und Verfügbarkeit","Alle 4 Schutzziele plus Kundenzufriedenheit"],r:2,e:"In einer IS-Leitlinie müssen mindestens die drei Grundschutzziele Vertraulichkeit, Integrität und Verfügbarkeit betrachtet werden.",p:true},
+    {f:"Wer ist verantwortlich für die Verabschiedung der IS-Leitlinie?",opts:["Der IT-Leiter","Der Informationssicherheitsbeauftragte (ISB)","Die Geschäftsführung","Der Datenschutzbeauftragte"],r:2,e:"Die IS-Leitlinie ist ein strategisches Grundsatzdokument und wird von der Geschäftsführung verabschiedet – nur so ist die nötige Verbindlichkeit gegeben.",p:true},
+    {f:"Welche 3 Hauptfunktionen hat die IS-Leitlinie?",opts:["Organisation, Technik, Prozesse","Orientierung & Richtlinien, Verpflichtung & Verantwortung, Kommunikation","Planung, Umsetzung, Kontrolle","Schutz, Abwehr, Wiederherstellung"],r:1,e:"Die drei Hauptfunktionen sind: Orientierung & Richtlinien, Verpflichtung & Verantwortung sowie Kommunikation.",p:true},
+    {f:"Welches Dokument steht an der Spitze der ISMS-Dokumentenhierarchie?",opts:["Das ISMS-Handbuch","Das Sicherheitskonzept","Die IS-Leitlinie","Die technische Richtlinie"],r:2,e:"Die IS-Leitlinie ist das oberste, strategische Dokument der ISMS-Dokumentenhierarchie. Alle anderen Dokumente leiten sich von ihr ab.",p:true},
+    {f:"Wie lange ist eine typische IS-Leitlinie gültig?",opts:["Laufend (anlassbezogen)","1–2 Jahre","3–5 Jahre","5–10 Jahre"],r:3,e:"Die IS-Leitlinie ist ein strategisches Dokument mit einer typischen Gültigkeit von 5–10 Jahren.",p:false},
+    {f:"Welches Dokument steht am Ende (operativsten Teil) der ISMS-Hierarchie?",opts:["IS-Leitlinie","Sicherheitskonzepte","Technische Richtlinien","Arbeitsanweisungen und Knowledgebases"],r:3,e:"Arbeitsanweisungen und Knowledgebases sind die operativsten Dokumente, sie werden laufend gepflegt.",p:false},
+    {f:"Welcher Inhalt gehört NICHT zu den Pflichtinhalten einer IS-Leitlinie?",opts:["Geltungsbereich","Festlegung der Sicherheitsziele","Detaillierte technische Firewall-Konfiguration","Übernahme der Verantwortung durch die Geschäftsführung"],r:2,e:"Konkrete technische Konfigurationen gehören in technische Richtlinien/Arbeitsanweisungen – nicht in die übergeordnete IS-Leitlinie.",p:true},
+    {f:"Was bedeutet die Abkürzung 'ISB' im Kontext der IS-Leitlinie?",opts:["Information Security Bridge","Informationssicherheitsbeauftragter","IT-System-Bereichsleiter","Internal Security Board"],r:1,e:"ISB steht für Informationssicherheitsbeauftragter – die zentrale Rolle zur operativen Steuerung der Informationssicherheit im Unternehmen.",p:false},
+    {f:"Was bedeutet 'op.OEs' in der ISMS-Dokumentenhierarchie?",opts:["Offizielle Organisationseinheiten","Operative Organisationseinheiten","Open Source Ebenen","Organisatorische Ordnungseinheiten"],r:1,e:"op.OEs = operative Organisationseinheiten. Sie sind gemeinsam mit dem ISB für die Umsetzung verantwortlich.",p:false},
+    {f:"Welche Dokumente werden typischerweise jährlich aktualisiert?",opts:["IS-Leitlinie","ISMS-Handbücher","Technische Richtlinien und Umsetzungskonzepte","Nur Arbeitsanweisungen"],r:2,e:"Technische Richtlinien und Umsetzungskonzepte werden typischerweise jährlich überprüft und aktualisiert.",p:false},
+    {f:"Was ist der wesentliche Unterschied zwischen Datenschutz und Informationssicherheit?",opts:["Datenschutz ist nur bei KRITIS relevant","Datenschutz schützt personenbezogene Daten, Informationssicherheit betrachtet alle Informationen und Prozesse","Informationssicherheit ist ein Teil des Datenschutzes","Beide sind identisch"],r:1,e:"Datenschutz schützt personenbezogene Daten (Personensicht). Informationssicherheit hat eine Geschäftssicht und umfasst sowohl Informationen als auch Prozesse.",p:true},
+    {f:"Welches Schutzziel steht im Notfallmanagement (BCM) im Mittelpunkt?",opts:["Vertraulichkeit","Integrität","Verfügbarkeit","Authentizität"],r:2,e:"Im Notfallmanagement (BCM) steht die Verfügbarkeit im Mittelpunkt – der Geschäftserhalt soll auch im Notfall sichergestellt werden.",p:false},
+    {f:"Aus welchen strategischen Grundlagen leitet sich die IS-Leitlinie ab?",opts:["Nur aus Gesetzen","Aus Geschäftsstrategie, Risikostrategie und IT-Strategie","Nur aus dem ISMS-Handbuch","Aus der Betriebsvereinbarung"],r:1,e:"Die IS-Leitlinie leitet sich aus Geschäftsstrategie, Risikostrategie und IT-Strategie ab – ergänzt durch Gesetze, Normen und Richtlinien.",p:false},
+    {f:"Welche Aussage zur Bekanntmachung der IS-Leitlinie ist korrekt?",opts:["Sie ist optional","Sie muss an alle Mitarbeiter erfolgen","Nur die IT-Abteilung muss informiert werden","Nur die Geschäftsführung muss sie kennen"],r:1,e:"Die IS-Leitlinie muss an alle Mitarbeiter bekannt gemacht werden – nur so entfaltet sie ihre Wirkung als gemeinsames Verständnis für Sicherheit.",p:true},
+    {f:"Welche Zeiträume der Dokumentenaktualisierung sind KORREKT zugeordnet?",opts:["IS-Leitlinie: laufend, Arbeitsanweisungen: 10 Jahre","IS-Leitlinie: 5-10 Jahre, Sicherheitskonzepte: 1-2 Jahre","IS-Leitlinie: 1 Jahr, ISMS-Handbücher: jährlich","Alle Dokumente werden alle 3 Jahre aktualisiert"],r:1,e:"Die IS-Leitlinie hat den längsten Zyklus (5-10 Jahre), Sicherheitskonzepte werden häufiger (1-2 Jahre) aktualisiert.",p:true},
+    {f:"Welches Dokument gibt konkrete Schutzmaßnahmen für bestimmte Objekte oder Bereiche vor?",opts:["IS-Leitlinie","ISMS-Handbuch","Sicherheitskonzept","Geschäftsstrategie"],r:2,e:"Sicherheitskonzepte definieren konkrete Schutzmaßnahmen für bestimmte Objekte oder Unternehmensbereiche – auf Basis der übergeordneten Leitlinie.",p:false}
+  ],
+  5:[
+    {f:"Welcher BSI-Standard definiert die IT-Grundschutz-Vorgehensweise?",opts:["BSI 200-1","BSI 200-2","BSI 200-3","BSI 200-4"],r:1,e:"BSI-Standard 200-2 beschreibt die konkrete IT-Grundschutz-Vorgehensweise (Methodik). 200-1 = ISMS-Einführung, 200-3 = Risikoanalyse, 200-4 = BCM.",p:true},
+    {f:"Welche drei Absicherungsstufen kennt BSI 200-2?",opts:["Niedrig, mittel, hoch","Basis, Kern, Standard","Einstieg, Fortgeschritten, Profi","Planung, Umsetzung, Kontrolle"],r:1,e:"Die drei Absicherungsstufen sind: Basis-Absicherung (schneller Einstieg), Kern-Absicherung (Kronjuwelen) und Standard-Absicherung (vollständig, zertifizierbar).",p:true},
+    {f:"Was ist das Ergebnis (Output) des ISMS-Prozesses nach BSI 200-2?",opts:["Die IS-Leitlinie","Das Sicherheitskonzept","Der IT-Grundschutz-Baustein","Die Risikoanalyse"],r:1,e:"Das Ergebnis der ISMS-Methodik ist das Sicherheitskonzept – die IS-Leitlinie ist davor verabschiedet worden.",p:true},
+    {f:"Wie viele Schichten hat die Strukturanalyse und in welcher Reihenfolge?",opts:["5 Schichten: Informationen, Anwendungen, Systeme, Netze, Räume","6 Schichten: Informationen, Prozesse, Anwendungen, IT-Systeme, Netze, Räume","4 Schichten: Daten, Prozesse, Systeme, Gebäude","7 Schichten: Information, Prozesse, Menschen, Anwendungen, Systeme, Netze, Räume"],r:1,e:"Die 6 Schichten von oben nach unten: Informationen → Prozesse → Anwendungen → IT-Systeme → Netze → Räume/Gebäude.",p:true},
+    {f:"Welche Grundsätze gelten für die Strukturanalyse?",opts:["Objekte können mehrfach vorhanden sein","Jedes Objekt nur einmal, muss Abhängigkeit von höherer Ebene haben, Abhängigkeiten transitiv","Nur IT-Systeme werden erfasst","Jedes Objekt bekommt automatisch höchsten Schutzbedarf"],r:1,e:"3 Grundsätze: (1) jedes Objekt genau einmal, (2) jedes Objekt muss Abhängigkeit von höherer Ebene erhalten, (3) Abhängigkeiten sind transitiv.",p:true},
+    {f:"Welche Schutzbedarfskategorien gibt es genau?",opts:["Normal, mittel, hoch, sehr hoch","Niedrig, hoch, sehr hoch","Normal, hoch, sehr hoch","Gering, ausreichend, hoch, sehr hoch, kritisch"],r:2,e:"Genau drei Kategorien: normal, hoch, sehr hoch. Diese gelten für alle Schutzziele (Verfügbarkeit, Vertraulichkeit, Integrität).",p:true},
+    {f:"Was besagt das Maximumprinzip?",opts:["Komponente erhält den niedrigsten Schutzbedarf","Komponente erhält den höchsten Schutzbedarf aller darauf aufbauenden Komponenten","Der Durchschnitt der Schutzbedarfe wird gebildet","Nur der direkt übergeordnete Schutzbedarf zählt"],r:1,e:"Maximumprinzip: Eine Komponente erbt den höchsten Schutzbedarf aller darauf aufbauenden Komponenten. Das ist der Regelfall der Vererbung.",p:true},
+    {f:"Was beschreibt der Kumulationseffekt?",opts:["Mehrere kleine Schutzbedarfe können zusammen einen höheren erzeugen","Der Schutzbedarf wird geteilt","Redundanz senkt den Schutzbedarf","Schutzbedarfe werden kumuliert (addiert)"],r:0,e:"Kumulationseffekt: Mehrere kleinere Schutzbedarfe können in der Bündelung zu einem höheren werden. Beispiel: Viele „hoch\" Systeme über EIN Netz → Netz wird „sehr hoch\".",p:true},
+    {f:"Wann greift der Verteilungseffekt?",opts:["Immer, wenn Systeme in verschiedenen Räumen stehen","Bei echter Redundanz mit automatischem Failover – senkt den Schutzbedarf der Einzelkomponente","Bei vielen Benutzern","Bei geografischer Verteilung"],r:1,e:"Der Verteilungseffekt senkt den Schutzbedarf einer Einzelkomponente, wenn durch Redundanz (z.B. automatisches Failover) die Gesamtfunktion gesichert ist.",p:true},
+    {f:"Was ist der Zweck des IT-Grundschutz-Checks?",opts:["Ermittlung des Schutzbedarfs","Soll-Ist-Vergleich: Welche Anforderungen aus Bausteinen sind umgesetzt?","Identifikation der Kronjuwelen","Durchführung der Strukturanalyse"],r:1,e:"Der IT-Grundschutz-Check vergleicht die Sicherheitsanforderungen aus den gewählten Bausteinen mit dem tatsächlichen Umsetzungsstand.",p:false},
+    {f:"Welche vier Bewertungen sind im IT-Grundschutz-Check möglich?",opts:["Ja, Nein, Vielleicht, Unklar","Ja, Teilweise, Nein, Entbehrlich","Erfüllt, Nicht erfüllt, In Arbeit, Geplant","Grün, Gelb, Rot, Grau"],r:1,e:"Die vier Bewertungen sind: Ja (umgesetzt), Teilweise, Nein (nicht umgesetzt), Entbehrlich (nicht relevant).",p:false},
+    {f:"Wann MUSS eine Risikoanalyse nach BSI 200-3 durchgeführt werden?",opts:["Immer für alle Komponenten","Bei hohem/sehr hohem Schutzbedarf, fehlendem Baustein oder untypischem Einsatz","Nur auf Wunsch des Kunden","Nur für neue Systeme"],r:1,e:"Eine Risikoanalyse ist erforderlich bei: hohem oder sehr hohem Schutzbedarf, fehlendem passenden Baustein oder untypischem Einsatz der Komponente.",p:false},
+    {f:"Was sind die 4 Optionen der Risikobehandlung?",opts:["Beobachten, Analysieren, Bewerten, Dokumentieren","Vermeiden, Vermindern, Übertragen, Akzeptieren","Patchen, Monitoren, Melden, Schulen","Isolieren, Verschlüsseln, Archivieren, Löschen"],r:1,e:"Die 4 klassischen Risikobehandlungsoptionen: Vermeiden, Vermindern, Übertragen (z.B. Versicherung), Akzeptieren.",p:true},
+    {f:"Was kennzeichnet die Kern-Absicherung?",opts:["Umsetzung aller BSI-Anforderungen","Fokus auf die wichtigsten Werte (Kronjuwelen)","Einfacher Einstieg für Anfänger","Ausschließlich technische Maßnahmen"],r:1,e:"Die Kern-Absicherung fokussiert auf die Identifikation und Absicherung der wichtigsten Werte (Kronjuwelen) eines Unternehmens.",p:false},
+    {f:"Welche Schicht steht in der Strukturanalyse GANZ OBEN?",opts:["Prozesse","Informationen","Anwendungen","IT-Systeme"],r:1,e:"Die Informationen stehen ganz oben – sie sind das zu schützende Gut. Darunter folgen Prozesse, Anwendungen, IT-Systeme, Netze und Räume.",p:true},
+    {f:"Was ist die Modellierung im Kontext BSI 200-2?",opts:["Grafische Darstellung der IT-Landschaft","Auswahl und Zuordnung passender Bausteine aus dem IT-Grundschutz-Kompendium","Bewertung der Schutzziele","Erstellung eines 3D-Modells der Räume"],r:1,e:"Bei der Modellierung werden für jedes Objekt passende Bausteine aus dem IT-Grundschutz-Kompendium ausgewählt und zugeordnet. Jeder Baustein enthält konkrete Sicherheitsanforderungen.",p:false}
+  ]
+};
+
+// Karten Logic
+const kartenIdx={k1:0,k2:0,k3:0,k4:0,k5:0};
+// Karten Logic
+function ladeKarte(id){
+  const d=kartenData[id];const i=kartenIdx[id];const k=d[i];
+  const el=document.getElementById(id+'-karte');
+  el.className='karte'+(k.p?' pruef':'');
+  el.onclick=()=>flipKarte(id);
+  document.getElementById(id+'-frage').textContent=k.f;
+  document.getElementById(id+'-antwort').textContent=k.a;
+  document.getElementById(id+'-info').textContent='Karte '+(i+1)+' von '+d.length;
+  document.getElementById(id+'-fort').style.width=((i+1)/d.length*100)+'%';
+}
+function flipKarte(id){document.getElementById(id+'-karte').classList.toggle('flipped');}
+function naechsteKarte(id){const d=kartenData[id];if(kartenIdx[id]<d.length-1){kartenIdx[id]++;ladeKarte(id);}}
+function vorKarte(id){if(kartenIdx[id]>0){kartenIdx[id]--;ladeKarte(id);}}
+['k1','k2','k3','k4','k5'].forEach(id=>ladeKarte(id));
+
+// Quiz Logic
+function makeState(){return{qi:0,p:0,sel:null,confirmed:false,order:[],history:[]};}
+const quizState={1:makeState(),2:makeState(),3:makeState(),4:makeState(),5:makeState()};
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function initQuiz(m){const s=quizState[m];s.order=shuffle([...Array(quizDataRaw[m].length).keys()]);s.qi=0;s.p=0;s.sel=null;s.confirmed=false;s.history=[];}
+
+function ladeFrage(m){
+  const s=quizState[m];const qs=quizDataRaw[m];
+  if(s.qi>=s.order.length){zeigeErgebnis(m);return;}
+  const f=qs[s.order[s.qi]];const tot=s.order.length;
+  document.getElementById('q'+m+'-counter').textContent='Frage '+(s.qi+1)+' von '+tot;
+  document.getElementById('q'+m+'-progfill').style.width=Math.round((s.qi+1)/tot*100)+'%';
+  document.getElementById('q'+m+'-frage').textContent=f.f;
+  const pb=document.getElementById('q'+m+'-pruef');pb.className='quiz-pruef'+(f.p?' show':'');
+  document.getElementById('q'+m+'-feedback').className='feedback';
+  document.getElementById('q'+m+'-feedback').textContent='';
+  document.getElementById('q'+m+'-confirm').style.display='none';
+  document.getElementById('q'+m+'-next').style.display='none';
+  document.getElementById('q'+m+'-hint').textContent='Bitte Antwort auswählen';
+  s.sel=null;s.confirmed=false;
+  const opts=document.getElementById('q'+m+'-opts');opts.innerHTML='';
+  f.opts.forEach((o,i)=>{
+    const btn=document.createElement('button');btn.className='opt';
+    btn.innerHTML='<span class="opt-label">'+LABELS[i]+'</span><span>'+o+'</span>';
+    btn.onclick=()=>waehlen(m,i,btn);
+    opts.appendChild(btn);
+  });
+}
+
+function waehlen(m,i,btn){
+  const s=quizState[m];if(s.confirmed)return;
+  s.sel=i;
+  document.querySelectorAll('#q'+m+'-opts .opt').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('q'+m+'-confirm').style.display='inline-block';
+  document.getElementById('q'+m+'-hint').textContent='';
+}
+
+function bestaetigen(m){
+  const s=quizState[m];if(s.sel===null)return;
+  s.confirmed=true;
+  const f=quizDataRaw[m][s.order[s.qi]];
+  const opts=document.querySelectorAll('#q'+m+'-opts .opt');
+  opts.forEach(b=>b.disabled=true);
+  const korrekt=s.sel===f.r;
+  if(korrekt){opts[s.sel].classList.remove('selected');opts[s.sel].classList.add('richtig');s.p++;}
+  else{opts[s.sel].classList.remove('selected');opts[s.sel].classList.add('falsch');opts[f.r].classList.add('richtig');}
+  const fb=document.getElementById('q'+m+'-feedback');
+  fb.className='feedback '+(korrekt?'ok':'nok');
+  fb.textContent=(korrekt?'✓ Richtig! ':'✗ Leider falsch. ')+f.e;
+  document.getElementById('q'+m+'-confirm').style.display='none';
+  document.getElementById('q'+m+'-next').style.display='inline-block';
+  s.history.push({frage:f.f,gewaehlt:f.opts[s.sel],richtig:f.opts[f.r],ok:korrekt});
+}
+
+function naechsteFrage(m){quizState[m].qi++;ladeFrage(m);}
+
+function zeigeErgebnis(m){
+  document.getElementById('q'+m+'-card').style.display='none';
+  document.getElementById('q'+m+'-ergebnis').style.display='block';
+  const s=quizState[m];const tot=s.order.length;
+  document.getElementById('q'+m+'-score').textContent=s.p+'/'+tot;
+  const pct=Math.round(s.p/tot*100);
+  document.getElementById('q'+m+'-scoretext').textContent=
+    pct>=80?'Ausgezeichnet! '+pct+'% – Du kennst Modul '+m+' sehr gut.':
+    pct>=60?'Gut! '+pct+'% – Wiederhole die markierten Themen.':
+    pct+'% – Noch Übung nötig. Geh die Lernkarten nochmal durch.';
+  const aw=document.getElementById('q'+m+'-auswertung');aw.innerHTML='';
+  s.history.forEach(h=>{
+    const div=document.createElement('div');div.className='auswertung-item';
+    div.innerHTML='<div class="aw-icon '+(h.ok?'aw-ok':'aw-nok')+'">'+(h.ok?'✓':'✗')+'</div>'
+      +'<div class="aw-content"><div class="aw-frage">'+h.frage+'</div>'
+      +'<div class="aw-antwort">Deine Antwort: '+h.gewaehlt+'</div>'
+      +(!h.ok?'<div class="aw-richtig">Richtig wäre: '+h.richtig+'</div>':'')+'</div>';
+    aw.appendChild(div);
+  });
+}
+
+function quizNeu(m){
+  initQuiz(m);
+  document.getElementById('q'+m+'-card').style.display='block';
+  document.getElementById('q'+m+'-ergebnis').style.display='none';
+  ladeFrage(m);
+}
+[1,2,3,4,5].forEach(m=>{initQuiz(m);ladeFrage(m);});
+</script>
+</body>
+</html>
